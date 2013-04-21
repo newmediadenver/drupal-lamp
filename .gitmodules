@@ -1,3 +1,6 @@
 [submodule "chef/cookbooks/apache2"]
 	path = chef/cookbooks/apache2
 	url = git://github.com/opscode-cookbooks/apache2.git
+[submodule "chef/cookbooks/php"]
+	path = chef/cookbooks/php
+	url = git://github.com/opscode-cookbooks/php.git
