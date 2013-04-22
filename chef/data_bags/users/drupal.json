@@ -1,0 +1,9 @@
+{
+  "id": "drupal",
+  "_default" : {
+    "dbuser": "drupal",
+    "dbpass": "drupal",
+    "admin_user": "admin",
+    "admin_pass": "admin"
+  }
+}

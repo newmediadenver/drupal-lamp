@@ -4,3 +4,18 @@
 [submodule "chef/cookbooks/php"]
 	path = chef/cookbooks/php
 	url = git://github.com/opscode-cookbooks/php.git
+[submodule "chef/cookbooks/git"]
+	path = chef/cookbooks/git
+	url = git://github.com/opscode-cookbooks/git.git
+[submodule "chef/cookbooks/mysql"]
+	path = chef/cookbooks/mysql
+	url = git://github.com/opscode-cookbooks/mysql.git
+[submodule "chef/cookbooks/openssl"]
+	path = chef/cookbooks/openssl
+	url = git://github.com/opscode-cookbooks/openssl.git
+[submodule "chef/cookbooks/database"]
+	path = chef/cookbooks/database
+	url = git://github.com/opscode-cookbooks/database.git
+[submodule "chef/cookbooks/build-essential"]
+	path = chef/cookbooks/build-essential
+	url = git://github.com/opscode-cookbooks/build-essential.git

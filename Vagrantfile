@@ -36,7 +36,6 @@ Vagrant.configure("2") do |config|
 
     server.vm.network :private_network, ip: "10.211.55.100"
     server.vm.hostname = "drupal.local"
-    server.vm.provision :shell, :inline => "apt-get update --fix-missing"
     server.vm.provision :chef_solo do |chef|
         chef.cookbooks_path = "chef/cookbooks"
         chef.roles_path = "chef/roles"
