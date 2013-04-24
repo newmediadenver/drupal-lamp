@@ -19,3 +19,6 @@
 [submodule "chef/cookbooks/build-essential"]
 	path = chef/cookbooks/build-essential
 	url = git://github.com/opscode-cookbooks/build-essential.git
+[submodule "chef/cookbooks/drupal"]
+	path = chef/cookbooks/drupal
+	url = git@github.com:cyberswat/drupal.git
