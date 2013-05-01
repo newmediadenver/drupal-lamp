@@ -21,6 +21,7 @@
 
 Vagrant.configure("2") do |config|
   config.vm.define :drupaldev do |server|
+    server.ssh.forward_agent = true
     server.vm.box = "precise64"
     #server.vm.box_url = "http://files.vagrantup.com/precise64_vmware_fusion.box"
     #server.vm.box_url = "http://files.vagrantup.com/precise64.box"
@@ -36,11 +37,23 @@ Vagrant.configure("2") do |config|
 
     server.vm.network :private_network, ip: "10.211.55.100"
     server.vm.hostname = "drupal.local"
+    server.vm.synced_folder "assets", "/assets", :nfs => false
     server.vm.provision :chef_solo do |chef|
-        chef.cookbooks_path = "chef/cookbooks"
-        chef.roles_path = "chef/roles"
-        chef.data_bags_path = "chef/data_bags"
-        chef.add_role("drupal_lamp")
+      chef.cookbooks_path = "chef/cookbooks"
+      chef.roles_path = "chef/roles"
+      chef.data_bags_path = "chef/data_bags"
+      chef.add_role("drupal_lamp")
+      chef.json = {
+        'drupal' => {
+          'repository' => {
+            'uri' => 'git@github.com:cyberswat/risingupsports.git',
+            'revision' => 'master'
+          },
+          'database' => {
+            'file' => '/assets/database/rus.sql',
+          }
+        }
+      }
     end
   end
 end
