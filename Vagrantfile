@@ -43,17 +43,6 @@ Vagrant.configure("2") do |config|
       chef.roles_path = "chef/roles"
       chef.data_bags_path = "chef/data_bags"
       chef.add_role("drupal_lamp")
-      chef.json = {
-        'drupal' => {
-          'repository' => {
-            'uri' => 'git@github.com:cyberswat/risingupsports.git',
-            'revision' => 'master'
-          },
-          'database' => {
-            'file' => '/assets/database/rus.sql',
-          }
-        }
-      }
     end
   end
 end
