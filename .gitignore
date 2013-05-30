@@ -19,3 +19,5 @@ doc/
 
 # Vagrant artifacts
 .vagrant
+
+.DS_Store

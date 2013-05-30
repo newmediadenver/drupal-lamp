@@ -18,6 +18,7 @@ default_attributes(
 env_run_lists "_default" => [
                 "recipe[sudo]",
                 "recipe[git]",
+                "recipe[drupal::ssh]",
                 "recipe[drupal::apache]",
                 "recipe[drupal::php]",
                 "recipe[drupal::drush]",

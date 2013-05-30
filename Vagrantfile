@@ -43,6 +43,7 @@ Vagrant.configure("2") do |config|
       chef.roles_path = "chef/roles"
       chef.data_bags_path = "chef/data_bags"
       chef.add_role("drupal_lamp")
+      chef.log_level = :debug
     end
   end
 end
