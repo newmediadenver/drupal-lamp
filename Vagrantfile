@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--memory", "1024"]
     end
 
-    server.vm.network :private_network, ip: "10.211.55.100"
+    server.vm.network :private_network, ip: "192.168.50.5"
     server.vm.hostname = "drupal.local"
     server.vm.synced_folder "assets", "/assets", :nfs => false
     server.vm.provision :chef_solo do |chef|
@@ -43,7 +43,26 @@ Vagrant.configure("2") do |config|
       chef.roles_path = "chef/roles"
       chef.data_bags_path = "chef/data_bags"
       chef.add_role("drupal_lamp")
-      chef.log_level = :debug
+      chef.json = {
+        "drupal" => {
+          "sites" => [
+            "furniche" => {
+              "releases" => 1,
+              "files" => "sites/default/files",
+              "settings" => "sites/default/settings.php",
+              "repository" => {
+                "uri" => "git@github.com:arknoll/furniche.git",
+                "revision" => "master",
+              },
+              "profile" => "standard",
+              "install" => {
+                "install_configure_form.update_status_module" => "'array(FALSE,FALSE)'",
+                "--clean-url" => 1,
+              }
+            }
+          ]
+        }
+      }
     end
   end
 end
