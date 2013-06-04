@@ -45,7 +45,7 @@ Vagrant.configure("2") do |config|
       chef.add_role("drupal_lamp")
       chef.json = {
         "drupal" => {
-          "sites" => [
+          "sites" => {
             "furniche" => {
               "deploy" => false,
               "releases" => 1,
@@ -62,7 +62,7 @@ Vagrant.configure("2") do |config|
               }
             },
             "drupal" => {
-              "deploy" => false,
+              "deploy" => true,
               "releases" => 1,
               "files" => "sites/default/files",
               "settings" => "sites/default/settings.php",
@@ -76,7 +76,7 @@ Vagrant.configure("2") do |config|
                 "--clean-url" => 1,
               }
             }
-          ]
+          }
         }
       }
     end
