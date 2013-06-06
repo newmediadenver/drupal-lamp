@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
 
     server.vm.network :private_network, ip: "192.168.50.5"
     server.vm.hostname = "drupal.local"
-    server.vm.synced_folder "assets", "/assets", :nfs => false
+    server.vm.synced_folder "assets", "/assets", :nfs => false, :owner => "www-data", :group => "www-data"
     server.vm.provision :chef_solo do |chef|
       chef.cookbooks_path = "chef/cookbooks"
       chef.roles_path = "chef/roles"
@@ -55,14 +55,14 @@ Vagrant.configure("2") do |config|
                 "uri" => "git@github.com:arknoll/furniche.git",
                 "revision" => "master",
               },
-              "profile" => "standard",
+              "profile" => "nmd",
               "install" => {
                 "install_configure_form.update_status_module" => "'array(FALSE,FALSE)'",
                 "--clean-url" => 1,
               }
             },
             "drupal" => {
-              "deploy" => true,
+              "deploy" => false,
               "releases" => 1,
               "files" => "sites/default/files",
               "settings" => "sites/default/settings.php",
