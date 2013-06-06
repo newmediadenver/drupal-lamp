@@ -46,29 +46,14 @@ Vagrant.configure("2") do |config|
       chef.json = {
         "drupal" => {
           "sites" => {
-            "furniche" => {
-              "deploy" => false,
-              "releases" => 1,
-              "files" => "sites/default/files",
-              "settings" => "sites/default/settings.php",
-              "repository" => {
-                "uri" => "git@github.com:arknoll/furniche.git",
-                "revision" => "master",
-              },
-              "profile" => "nmd",
-              "install" => {
-                "install_configure_form.update_status_module" => "'array(FALSE,FALSE)'",
-                "--clean-url" => 1,
-              }
-            },
             "drupal" => {
               "deploy" => false,
               "releases" => 1,
               "files" => "sites/default/files",
               "settings" => "sites/default/settings.php",
               "repository" => {
-                "uri" => "git@github.com:arknoll/d7-base.git",
-                "revision" => "master",
+                "uri" => "http://git.drupal.org/project/drupal.git",
+                "revision" => "7.x",
               },
               "profile" => "standard",
               "install" => {
