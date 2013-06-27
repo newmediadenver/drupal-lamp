@@ -67,7 +67,7 @@ cyberswat:git/ $ cd drupal-lamp
 cyberswat:drupal-lamp/ (master) $
 ```
 
-Create the assets folder.  This is where the drupal code and files that you are working with will be stored.
+Create the assets folder.  This is where the drupal code and files that you are working with will be stored.  I go over this in detail later in the README.
 
 ```bash
 cyberswat:drupal-lamp/ (master) $ mkdir assets
@@ -273,3 +273,33 @@ The structure of the json works with chef to define the attributes necessary to 
   }
 }
 ```
+
+## Assets ##
+
+During the setup you created an assets folder to store all of the Drupal files. This folder becomes a mount from the virtual machine to provide a way to keep everything you are interested on your local machine. This gives you the ability to work with the files in a way that is comfortable to you.  Understanding the structure of this folder is important.
+
+```
+drupal-lamp
+  |_ site01
+    |_ current -> releases/20130627203237
+    |_ files
+    |_ releases
+      |_ 20130627203237
+    |_ shared
+      |_ cached-copy
+  |_ site02
+    |_ current -> releases/20130627203238
+    |_ files
+    |_ releases
+      |_ 20130627203238
+    |_ shared
+      |_ cached-copy
+```
+
+current is a symbolic link to the most recent code that has been deployed. Code is deployed each time you run a vagrant provision if you have the sites deploy flag in your json file set to true.  Each deployment creates a unix timestamped folder that contains the drupal code. You can make your modifications in this folder and have them show up in real time for the drupal site you see in your browser.
+
+In order to facilitate the symlinks that are necessary for this deployment strategy the files directory remains static. Each timestamped folder contains a symbolic link to the files directory to remain light weight.
+
+The releases folder contains the timestamped folders that are created when you provision.
+
+The cached-copy folder contains the initial clone of the sites repository.  This is done so that you do not need to copy the entire repository with each deployment.
