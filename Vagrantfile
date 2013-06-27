@@ -1,5 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+require 'json'
 
 =begin
 
@@ -18,6 +19,8 @@
   downloaded by uncommenting the appropriate server.vm.box_url line below.
 
 =end
+json_path = ENV['DRUPAL_LAMP'].nil? ? ".drupal_lamp.json" : ENV['DRUPAL_LAMP']
+data = JSON.parse(File.read(json_path))
 
 Vagrant.configure("2") do |config|
   config.vm.define :drupaldev do |server|
@@ -43,28 +46,7 @@ Vagrant.configure("2") do |config|
       chef.roles_path = "chef/roles"
       chef.data_bags_path = "chef/data_bags"
       chef.add_role("drupal_lamp")
-      chef.json = {
-        "drupal" => {
-          "sites" => {
-            "drupal" => {
-              "deploy" => true,
-              "clean" => true,
-              "releases" => 1,
-              "files" => "sites/default/files",
-              "settings" => "sites/default/settings.php",
-              "repository" => {
-                "uri" => "http://git.drupal.org/project/drupal.git",
-                "revision" => "7.x",
-              },
-              "profile" => "standard",
-              "install" => {
-                "install_configure_form.update_status_module" => "'array(FALSE,FALSE)'",
-                "--clean-url" => 1,
-              }
-            }
-          }
-        }
-      }
+      chef.json = data
     end
   end
 end
