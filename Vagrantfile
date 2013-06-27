@@ -48,6 +48,7 @@ Vagrant.configure("2") do |config|
           "sites" => {
             "drupal" => {
               "deploy" => true,
+              "clean" => true,
               "releases" => 1,
               "files" => "sites/default/files",
               "settings" => "sites/default/settings.php",
