@@ -234,7 +234,7 @@ cyberswat:drupal-lamp/ (master✗) $ export DRUPAL_LAMP=/Users/cyberswat/.drupal
 
 The structure of the json works with chef to define the attributes necessary to do it's work.  JSON doesn't allow comments by default, but please read through the following to help clarify it's use.  It may be helpful to compare the raw file to this commented version for clarity.
 
-```
+```javascript
 {
 // drupal is a chef specific namespace that is required.
   "drupal": {
