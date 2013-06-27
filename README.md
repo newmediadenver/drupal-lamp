@@ -280,20 +280,21 @@ During the setup you created an assets folder to store all of the Drupal files. 
 
 ```
 drupal-lamp
-  |_ site01
-    |_ current -> releases/20130627203237
-    |_ files
-    |_ releases
-      |_ 20130627203237
-    |_ shared
-      |_ cached-copy
-  |_ site02
-    |_ current -> releases/20130627203238
-    |_ files
-    |_ releases
-      |_ 20130627203238
-    |_ shared
-      |_ cached-copy
+  |_ assets
+    |_ site01
+      |_ current -> releases/20130627203237
+      |_ files
+      |_ releases
+        |_ 20130627203237
+      |_ shared
+        |_ cached-copy
+    |_ site02
+      |_ current -> releases/20130627203238
+      |_ files
+      |_ releases
+        |_ 20130627203238
+      |_ shared
+        |_ cached-copy
 ```
 
 current is a symbolic link to the most recent code that has been deployed. Code is deployed each time you run a vagrant provision if you have the sites deploy flag in your json file set to true.  Each deployment creates a unix timestamped folder that contains the drupal code. You can make your modifications in this folder and have them show up in real time for the drupal site you see in your browser.
