@@ -36,28 +36,17 @@ or
 
 These instructions take you from zero to a working, virtualized installation of Drupal 7.  It may be a bit simplistic if you are already familiar with Vagrant and you can figure it out if you know Chef ... if that's you then feel free to go that path.  For the rest of the world, this should be helpful.
 
-Add your ssh key to ssh-agent.  You only need this if you are working with git repositories that are private and require your authentication.
-
-```bash
-cyberswat:git/ $ ssh-add
-Enter passphrase for /Users/cyberswat/.ssh/id_rsa:
-Identity added: /Users/cyberswat/.ssh/id_rsa (/Users/cyberswat/.ssh/id_rsa)
-cyberswat:git/ $ ssh-add -l
-2048 a7:93:5c:93:5c:95:51:cc:60:f5:95:ba:2c:50:81:ca /Users/cyberswat/.ssh/id_rsa (RSA)
-```
-
 Clone the drupal-lamp git repository.
 
 ```bash
-cyberswat:git/ $ git clone git@github.com:cyberswat/drupal-lamp.git
+cyberswat:git/ $ git clone git://github.com/cyberswat/drupal-lamp.git
 Cloning into 'drupal-lamp'...
-Warning: Permanently added 'github.com,204.232.175.90' (RSA) to the list of known hosts.
-Identity added: /Users/cyberswat/.ssh/cyberswat_foo (/Users/cyberswat/.ssh/cyberswat_foo)
-remote: Counting objects: 121, done.
-remote: Compressing objects: 100% (67/67), done.
-remote: Total 121 (delta 49), reused 115 (delta 43)
-Receiving objects: 100% (121/121), 17.08 KiB, done.
-Resolving deltas: 100% (49/49), done.
+remote: Counting objects: 171, done.
+remote: Compressing objects: 100% (106/106), done.
+remote: Total 171 (delta 70), reused 150 (delta 54)
+Receiving objects: 100% (171/171), 29.57 KiB, done.
+Resolving deltas: 100% (70/70), done.
+
 ```
 
 Change directory into the cloned repository.
@@ -81,7 +70,7 @@ cyberswat:drupal-lamp/ (master) $ git submodule init
 Submodule 'chef/cookbooks/apache2' (git://github.com/opscode-cookbooks/apache2.git) registered for path 'chef/cookbooks/apache2'
 Submodule 'chef/cookbooks/build-essential' (git://github.com/opscode-cookbooks/build-essential.git) registered for path 'chef/cookbooks/build-essential'
 Submodule 'chef/cookbooks/database' (git://github.com/opscode-cookbooks/database.git) registered for path 'chef/cookbooks/database'
-Submodule 'chef/cookbooks/drupal' (git@github.com:cyberswat/drupal.git) registered for path 'chef/cookbooks/drupal'
+Submodule 'chef/cookbooks/drupal' (git://github.com/cyberswat/drupal.git) registered for path 'chef/cookbooks/drupal'
 Submodule 'chef/cookbooks/git' (git://github.com/opscode-cookbooks/git.git) registered for path 'chef/cookbooks/git'
 Submodule 'chef/cookbooks/mysql' (git://github.com/opscode-cookbooks/mysql.git) registered for path 'chef/cookbooks/mysql'
 Submodule 'chef/cookbooks/openssl' (git://github.com/opscode-cookbooks/openssl.git) registered for path 'chef/cookbooks/openssl'
