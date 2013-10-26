@@ -13,11 +13,20 @@ default_attributes(
       "groups" => ["admin", "sudo"],
       "passwordless" => true
     }
+  },
+  'mysql' => {
+    'server_debian_password' => 'debian',
+    'server_root_password' => 'root',
+    'server_repl_password' => 'replication'
   }
 )
+
 env_run_lists "_default" => [
+                "recipe[drupal::init]",
                 "recipe[sudo]",
                 "recipe[git]",
+                "recipe[build-essential]",
+                "recipe[mysql::server]",
                 "recipe[drupal::ssh]",
                 "recipe[drupal::apache]",
                 "recipe[drupal::php]",

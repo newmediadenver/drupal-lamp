@@ -25,3 +25,6 @@
 [submodule "chef/cookbooks/sudo"]
 	path = chef/cookbooks/sudo
 	url = git://github.com/opscode-cookbooks/sudo.git
+[submodule "chef/cookbooks/ssh_known_hosts"]
+	path = chef/cookbooks/ssh_known_hosts
+	url = git@github.com:opscode-cookbooks/ssh_known_hosts.git
