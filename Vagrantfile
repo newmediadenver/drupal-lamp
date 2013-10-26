@@ -19,7 +19,6 @@ require 'json'
   downloaded by uncommenting the appropriate server.vm.box_url line below.
 
 =end
-
 data = JSON.parse(File.read("infrastructure/drupal_lamp.json"))
 
 Vagrant.configure("2") do |config|
