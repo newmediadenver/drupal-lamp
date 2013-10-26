@@ -11,9 +11,7 @@ require 'json'
 
   In order to use the vmware_fusion provider you will need to have a licensed
   copy of vmware fusion installed. You will also need to purchase a vagrant
-  vmware seat http://www.vagrantup.com/vmware ... I'm of the opinion that vmware
-  is a far superior product and it's worth the money not to have to rely on
-  oracle.
+  vmware seat http://www.vagrantup.com/vmware
 
   Virtualbox and Vmware each have different base boxes that can be automatically
   downloaded by uncommenting the appropriate server.vm.box_url line below.
