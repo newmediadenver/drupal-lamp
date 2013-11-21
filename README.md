@@ -115,24 +115,36 @@ The structure of the json works with chef to define the attributes necessary to 
 
 ```javascript
 {
+  // Controls the Database settings
   "db": {
+      // Corresponds to what goes into settings.php
       "driver": "mysql",
+      // Cookbook used to setup the database
       "client_recipe": "mysql::client",
+      // Sets root user name
       "root": "root",
+      // An array of hosts that are allowed to connect to the database
       "grant_hosts": [
         "localhost"
       ],
+      // Array of users configured for the database
       "users": {
         "root": "root",
         "replication": "replication",
         "debian": "debian"
       }
   },
+  // Global server specific settings
   "server": {
+      // System webserver user
       "web_user": "www-data",
+      // System group the user belongs to
       "web_group": "www-data",
+      // Where the raw undeployed files exist
       "assets": "/srv/assets",
-      "theme_default": "mydcsd",
+      // Default theme for the drupal install
+      "theme_default": "example",
+      // The base directory the deployments work from on server
       "base": "/srv/www"
   },
   // drupal is a chef specific namespace that is required.
@@ -141,13 +153,17 @@ The structure of the json works with chef to define the attributes necessary to 
       "sites": {
           // This is the beginning of the definition for a site named "example".
           "example": {
+              // Whether or not to do anything with this drupal site during deployment, set to true to provision site
               "active": true,
+              // Variables related to the deployment action
               "deploy": {
+                  // Available flags: "clean" -- runs drush site-install "update"-- runs drush update-db "nothing" -- does nothing
                   "action": "clean",
+                  // Number of previous releases to keep
                   "releases": 1
               },
               "drupal": {
-                  // The version of Drupal that is being installed.
+                  // Metadata to allow you to query your infrastucute for specific versions Drupal
                   "version": 7.23,
                   // A hash of installation flags that are appended to the drush site-install command.
                   "install": {
@@ -161,10 +177,13 @@ The structure of the json works with chef to define the attributes necessary to 
                       "profile": "standard",
                       // The location of the files for drupal
                       "files": "sites/default/files",
+                      // If you have a custom settings.php file that you want included in the existing settings.php
                       "custom": "sites/default/example.settings.php",
                       // location of the settings.php file to use
                       "settings": "sites/default/settings.php",
+                      // The Chef cookbook to use druing deployment
                       "cookbook": "drupal",
+                      // Ruby file used to create custom.settings.php based on prior flag
                       "template": "example.settings.php.erb",
                       // Name of Drupal DB.
                       "db_name": "example",
@@ -185,11 +204,34 @@ The structure of the json works with chef to define the attributes necessary to 
                   // The revision referenced in the repository eg: 'master', etc.
                   "revision": "7.x"
               },
+              // A hash containing Apache settings
               "web_app": {
-                  "80": {
-                    "server_name": "drupal.local",
-                    "rewrite_engine": "On",
-                    "docroot": "/srv/www/example/current"
+                  "web_app": {
+                      // This is simple an example: DO NOT USE THESE SETTINGS,
+                      // However, this shows that this is simply the apache config settings
+                      // And all can be controlled in this hash.
+                      "80": {
+                        "redirect": ["permanent / https://example.vagrant.local/"],
+                        "server_name": "example.vagrant.local"
+                      },
+                      "443": {
+                        "server_name": "example.vagrant.local",
+                        "server_aliases": ["example.vagrant.local"],
+                        "error_log": "syslog:local7",
+                        "transfer_log": "logs/ssl_access_log",
+                        "log_level": "warn",
+                        "ssl": {
+                          "ssl_engine": "on",
+                          "ssl_protocol": ["all", "-SSLv2"],
+                          "ssl_cipher_suite": ["ALL", "!ADH", "!EXPORT", "!SSLv2", "RC4+RSA", "+HIGH", "+MEDIUM", "+LOW"],
+                          "ssl_certificate_file": "/etc/httpd/ssl/cert.pem",
+                          "ssl_certificate_key_file": "/etc/httpd/ssl/key.pem"
+                        },
+                        "set_env_if": ["SetEnvIf User-Agent \".*MSIE.*\" nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0"],
+                        "custom_log": "\"|/usr/bin/logger -t httpd -p local6.info\" combined",
+                        "rewrite_engine": "On",
+                        "docroot": "/var/www/html/example/current"
+                      }
                   }
               }
           }
