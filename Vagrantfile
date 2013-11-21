@@ -26,14 +26,14 @@ Vagrant.configure("2") do |config|
     server.ssh.forward_agent = true
     server.vm.box = "precise64"
     #server.vm.box_url = "http://files.vagrantup.com/precise64_vmware_fusion.box"
-    server.vm.box_url = "http://files.vagrantup.com/precise64.box"
+    #server.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
     server.vm.provider "vmware_fusion" do |v|
       v.vmx["memsize"]  = "1024"
     end
 
     server.vm.provider :virtualbox do |v|
-      v.name = "test"
+      v.name = "drupal"
       v.customize ["modifyvm", :id, "--memory", "1024"]
     end
 
