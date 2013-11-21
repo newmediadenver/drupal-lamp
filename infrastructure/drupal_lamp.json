@@ -1,0 +1,64 @@
+{
+  "db": {
+      "driver": "mysql",
+      "client_recipe": "mysql::client",
+      "root": "root",
+      "grant_hosts": [
+        "localhost"
+      ],
+      "users": {
+        "root": "root",
+        "replication": "replication",
+        "debian": "debian"
+      }
+  },
+  "server": {
+      "web_user": "www-data",
+      "web_group": "www-data",
+      "assets": "/srv/assets",
+      "theme_default": "mydcsd",
+      "base": "/srv/www"
+  },
+  "drupal": {
+      "sites": {
+          "example": {
+              "active": true,
+              "deploy": {
+                  "action": "clean",
+                  "releases": 1
+              },
+              "drupal": {
+                  "version": 7.23,
+                  "install": {
+                      "install_configure_form.update_status_module": "'array(FALSE,FALSE)'",
+                      "--clean-url": 1
+                  },
+                  "settings": {
+                      "profile": "standard",
+                      "files": "sites/default/files",
+                      "custom": "sites/default/example.settings.php",
+                      "settings": "sites/default/settings.php",
+                      "cookbook": "drupal",
+                      "template": "example.settings.php.erb",
+                      "db_name": "example",
+                      "db_host": "localhost",
+                      "db_prefix": "",
+                      "db_driver": "mysql"
+                  }
+              },
+              "repository": {
+                  "host": "github.com",
+                  "uri": "https://github.com/drupal/drupal.git",
+                  "revision": "7.x"
+              },
+              "web_app": {
+                  "80": {
+                    "server_name": "drupal.local",
+                    "rewrite_engine": "On",
+                    "docroot": "/srv/www/example/current"
+                  }
+              }
+          }
+      }
+  }
+}

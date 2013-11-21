@@ -11,16 +11,13 @@ require 'json'
 
   In order to use the vmware_fusion provider you will need to have a licensed
   copy of vmware fusion installed. You will also need to purchase a vagrant
-  vmware seat http://www.vagrantup.com/vmware ... I'm of the opinion that vmware
-  is a far superior product and it's worth the money not to have to rely on
-  oracle.
+  vmware seat http://www.vagrantup.com/vmware
 
   Virtualbox and Vmware each have different base boxes that can be automatically
   downloaded by uncommenting the appropriate server.vm.box_url line below.
 
 =end
-json_path = ENV['DRUPAL_LAMP'].nil? ? ".drupal_lamp.json" : ENV['DRUPAL_LAMP']
-data = JSON.parse(File.read(json_path))
+data = JSON.parse(File.read("infrastructure/drupal_lamp.json"))
 
 Vagrant.configure("2") do |config|
   config.vm.define :drupaldev do |server|
@@ -42,6 +39,8 @@ Vagrant.configure("2") do |config|
     server.vm.hostname = "drupal.local"
     server.vm.synced_folder "assets", "/assets", :nfs => false, :owner => "www-data", :group => "www-data"
     server.vm.provision :chef_solo do |chef|
+      chef.log_level = :info
+
       chef.cookbooks_path = "chef/cookbooks"
       chef.roles_path = "chef/roles"
       chef.data_bags_path = "chef/data_bags"
