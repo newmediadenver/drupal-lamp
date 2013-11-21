@@ -20,6 +20,8 @@ require 'json'
 data = JSON.parse(File.read("infrastructure/drupal_lamp.json"))
 
 Vagrant.configure("2") do |config|
+  config.berkshelf.enabled = true
+  config.berkshelf.berksfile_path = File.dirname(__FILE__) + "/Berksfile"
   config.vm.define :drupaldev do |server|
     server.ssh.forward_agent = true
     server.vm.box = "precise64"
@@ -40,8 +42,6 @@ Vagrant.configure("2") do |config|
     server.vm.synced_folder "assets", "/assets", :nfs => false, :owner => "www-data", :group => "www-data"
     server.vm.provision :chef_solo do |chef|
       chef.log_level = :info
-
-      chef.cookbooks_path = "chef/cookbooks"
       chef.roles_path = "chef/roles"
       chef.data_bags_path = "chef/data_bags"
       chef.add_role("drupal_lamp")
