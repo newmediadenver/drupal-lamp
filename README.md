@@ -63,89 +63,12 @@ cyberswat:drupal-lamp/ (master) $ mkdir assets
 cyberswat:drupal-lamp/ (master) $
 ```
 
-Each of the chef recipes that Vagrant uses are referenced as git submodules.  First, you need to initialize the submodules.
+Each of the chef recipes that Vagrant uses are referenced as cookbooks in the Berkfile.  To utilize these with vagrant run:
 
 ```bash
-cyberswat:drupal-lamp/ (master) $ git submodule init
-Submodule 'chef/cookbooks/apache2' (git://github.com/opscode-cookbooks/apache2.git) registered for path 'chef/cookbooks/apache2'
-Submodule 'chef/cookbooks/build-essential' (git://github.com/opscode-cookbooks/build-essential.git) registered for path 'chef/cookbooks/build-essential'
-Submodule 'chef/cookbooks/database' (git://github.com/opscode-cookbooks/database.git) registered for path 'chef/cookbooks/database'
-Submodule 'chef/cookbooks/drupal' (git://github.com/cyberswat/drupal.git) registered for path 'chef/cookbooks/drupal'
-Submodule 'chef/cookbooks/git' (git://github.com/opscode-cookbooks/git.git) registered for path 'chef/cookbooks/git'
-Submodule 'chef/cookbooks/mysql' (git://github.com/opscode-cookbooks/mysql.git) registered for path 'chef/cookbooks/mysql'
-Submodule 'chef/cookbooks/openssl' (git://github.com/opscode-cookbooks/openssl.git) registered for path 'chef/cookbooks/openssl'
-Submodule 'chef/cookbooks/php' (git://github.com/opscode-cookbooks/php.git) registered for path 'chef/cookbooks/php'
-Submodule 'chef/cookbooks/sudo' (git://github.com/opscode-cookbooks/sudo.git) registered for path 'chef/cookbooks/sudo'
-```
-
-After the submodules are initialized you need to update them so that they pull down their respective code.
-
-```bash
-cyberswat:drupal-lamp/ (master) $ git submodule update
-Cloning into 'chef/cookbooks/apache2'...
-remote: Counting objects: 2101, done.
-remote: Compressing objects: 100% (1037/1037), done.
-remote: Total 2101 (delta 1153), reused 1825 (delta 912)
-Receiving objects: 100% (2101/2101), 386.35 KiB | 499 KiB/s, done.
-Resolving deltas: 100% (1153/1153), done.
-Submodule path 'chef/cookbooks/apache2': checked out '9eb2252c1582514364d962fdedd70e6ea98436b9'
-Cloning into 'chef/cookbooks/build-essential'...
-remote: Counting objects: 283, done.
-remote: Compressing objects: 100% (163/163), done.
-remote: Total 283 (delta 131), reused 228 (delta 86)
-Receiving objects: 100% (283/283), 40.92 KiB, done.
-Resolving deltas: 100% (131/131), done.
-Submodule path 'chef/cookbooks/build-essential': checked out 'df4264aad07d706f3207cb1fe2bbfa03a0b82f31'
-Cloning into 'chef/cookbooks/database'...
-remote: Counting objects: 475, done.
-remote: Compressing objects: 100% (249/249), done.
-remote: Total 475 (delta 268), reused 413 (delta 217)
-Receiving objects: 100% (475/475), 91.40 KiB, done.
-Resolving deltas: 100% (268/268), done.
-Submodule path 'chef/cookbooks/database': checked out '8f31c451d1b090165c758d37b2d4a78a533ccf31'
-Cloning into 'chef/cookbooks/drupal'...
-Warning: Permanently added 'github.com,204.232.175.90' (RSA) to the list of known hosts.
-remote: Counting objects: 75, done.
-remote: Compressing objects: 100% (38/38), done.
-remote: Total 75 (delta 36), reused 65 (delta 26)
-Receiving objects: 100% (75/75), 13.75 KiB, done.
-Resolving deltas: 100% (36/36), done.
-Submodule path 'chef/cookbooks/drupal': checked out '69eca845e23aa06251ea373eadaa46da6107d697'
-Cloning into 'chef/cookbooks/git'...
-remote: Counting objects: 473, done.
-remote: Compressing objects: 100% (262/262), done.
-remote: Total 473 (delta 208), reused 439 (delta 178)
-Receiving objects: 100% (473/473), 73.76 KiB, done.
-Resolving deltas: 100% (208/208), done.
-Submodule path 'chef/cookbooks/git': checked out '5860dd00c470f1bdebf42bf369d9da58029ce9f5'
-Cloning into 'chef/cookbooks/mysql'...
-remote: Counting objects: 1533, done.
-remote: Compressing objects: 100% (1043/1043), done.
-remote: Total 1533 (delta 651), reused 1239 (delta 390)
-Receiving objects: 100% (1533/1533), 306.03 KiB, done.
-Resolving deltas: 100% (651/651), done.
-Submodule path 'chef/cookbooks/mysql': checked out '61bda92b46f2eabd59a8e4c3eef4df8096bcf0dc'
-Cloning into 'chef/cookbooks/openssl'...
-remote: Counting objects: 80, done.
-remote: Compressing objects: 100% (42/42), done.
-remote: Total 80 (delta 36), reused 68 (delta 27)
-Receiving objects: 100% (80/80), 15.47 KiB, done.
-Resolving deltas: 100% (36/36), done.
-Submodule path 'chef/cookbooks/openssl': checked out 'ccf81e9b3fec9427ed2e6dd76f252dcf68370379'
-Cloning into 'chef/cookbooks/php'...
-remote: Counting objects: 578, done.
-remote: Compressing objects: 100% (340/340), done.
-remote: Total 578 (delta 320), reused 448 (delta 205)
-Receiving objects: 100% (578/578), 124.96 KiB, done.
-Resolving deltas: 100% (320/320), done.
-Submodule path 'chef/cookbooks/php': checked out '6a3056dae96d0a826ddc8f5a8ff392afa61aaafc'
-Cloning into 'chef/cookbooks/sudo'...
-remote: Counting objects: 414, done.
-remote: Compressing objects: 100% (186/186), done.
-remote: Total 414 (delta 159), reused 394 (delta 142)
-Receiving objects: 100% (414/414), 68.24 KiB, done.
-Resolving deltas: 100% (159/159), done.
-Submodule path 'chef/cookbooks/sudo': checked out '7eb50f591ca5eef5b706f447c942b2caa169b819'
+cyberswat:drupal-lamp/ (master) $ $ vagrant plugin install vagrant-berkshelf
+Installing the 'vagrant-berkshelf' plugin. This can take a few minutes...
+Installed the plugin 'vagrant-berkshelf'
 ```
 
 You can evaluate state of the instances that are defined in the Vagrantfile.
@@ -164,49 +87,16 @@ Before bringing an instance online you need to download a base box. The base box
 You will need to edit the Vagrantfile at the root level of the cloned drupal-lamp repository to uncomment the url of the base box you would like to use.  Line 26 is an Ubuntu 12.04 base box that will work with VMware while line 27 provides the same box configured to work with VirtualBox. Once you've uncommented your selection you can bring the box up.  I'll stick with VirtualBox from this point forward simply because most people will be using it.  You can use the --provider flag for the vagrant command to switch to VMware (which I recommend), but that is outside the scope of these instructions.
 
 ```bash
-cyberswat:drupal-lamp/ (master✗) $ vagrant up drupaldev
-Bringing machine 'drupaldev' up with 'virtualbox' provider...
-[drupaldev] Box 'precise64' was not found. Fetching box from specified URL for
-the provider 'virtualbox'. Note that if the URL does not have
-a box for this provider, you should interrupt Vagrant now and add
-the box yourself. Otherwise Vagrant will attempt to download the
-full box prior to discovering this error.
-Downloading or copying the box...
-Extracting box...te: 132k/s, Estimated time remaining: --:--:--)
-Successfully added box 'precise64' with provider 'virtualbox'!
-[drupaldev] Importing base box 'precise64'...
-[drupaldev] Matching MAC address for NAT networking...
-[drupaldev] Setting the name of the VM...
-[drupaldev] Clearing any previously set forwarded ports...
-[drupaldev] Creating shared folders metadata...
-[drupaldev] Clearing any previously set network interfaces...
-[drupaldev] Preparing network interfaces based on configuration...
-[drupaldev] Forwarding ports...
-[drupaldev] -- 22 => 2222 (adapter 1)
-[drupaldev] Running any VM customizations...
-[drupaldev] Booting VM...
-[drupaldev] Waiting for VM to boot. This can take a few minutes.
-[drupaldev] VM booted and ready for use!
-[drupaldev] Setting hostname...
-[drupaldev] Configuring and enabling network interfaces...
-[drupaldev] Mounting shared folders...
-[drupaldev] -- /assets
-[drupaldev] -- /vagrant
-[drupaldev] -- /tmp/vagrant-chef-1/chef-solo-2/roles
-[drupaldev] -- /tmp/vagrant-chef-1/chef-solo-1/cookbooks
-[drupaldev] -- /tmp/vagrant-chef-1/chef-solo-3/data_bags
-[drupaldev] Running provisioner: chef_solo...
-Generating chef JSON and uploading...
-Running chef-solo...
-<-- snip -->
-[2013-06-26T19:13:48+00:00] INFO: Running report handlers
-[2013-06-26T19:13:48+00:00] INFO: Report handlers complete
+cyberswat:drupal-lamp/ (master✗) $ vagrant up
 ```
+
+This command will run through the install of the cookbooks using berkshelf and then run through the installation of the LAMP stack and drupal using the cookbooks and vagrant.
+
 If all went well you should the last two lines above at the end of the provisioning stream. At this point you should have a LAMP stack with drupal 7 installed running on your machine.  If you edit the Vagrantfile you will see the ip address the instance has reserved on line 38.  The default is 192.168.50.5 ... if the instance has any kind of networking issues it may be necessary to edit this address.
 
 ### Edit hosts file ###
 
-The proper way to view your new drupal site is to edit your hosts file to point to it.  By default the syntax is http://sitename.local.  We will go over how to set the site name later in the documentation. For the purposes of these instructions add a host entry pointing to drupal.local corresponding to the ip address in your Vagrantfile.
+The proper way to view your new drupal site is to edit your hosts file to point to it.  By default the syntax is http://sitename.local. On Macs and Linux, this can be found at /etc/hosts.
 
 ```bash
 192.168.50.5    drupal.local
@@ -214,7 +104,7 @@ The proper way to view your new drupal site is to edit your hosts file to point 
 
 ## Configuring Sites ##
 
-This project will allow you to work with multiple drupal sites on teh same server. The Drupal 7 example is included in the .drupal_lamp.json file.  You can override the location of this file by setting an environment variable that contains the absolute path to the file.  This is done so that you can maintain your site configurations separately from the repository so that they are easy to edit, maintain and not accidently lost.  This file must be valid JSON.
+This project will allow you to work with multiple drupal sites on the same server. The Drupal 7 example is included in the .drupal_lamp.json file.  You can override the location of this file by setting an environment variable that contains the absolute path to the file.  This is done so that you can maintain your site configurations separately from the repository so that they are easy to edit, maintain and not accidently lost.  This file must be valid JSON.
 
 ```bash
 cyberswat:drupal-lamp/ (master✗) $ cp .drupal_lamp.json /Users/cyberswat/.drupal_lamp.json
@@ -225,37 +115,124 @@ The structure of the json works with chef to define the attributes necessary to 
 
 ```javascript
 {
-// drupal is a chef specific namespace that is required.
+  // Controls the Database settings
+  "db": {
+      // Corresponds to what goes into settings.php
+      "driver": "mysql",
+      // Cookbook used to setup the database
+      "client_recipe": "mysql::client",
+      // Sets root user name
+      "root": "root",
+      // An array of hosts that are allowed to connect to the database
+      "grant_hosts": [
+        "localhost"
+      ],
+      // Array of users configured for the database
+      "users": {
+        "root": "root",
+        "replication": "replication",
+        "debian": "debian"
+      }
+  },
+  // Global server specific settings
+  "server": {
+      // System webserver user
+      "web_user": "www-data",
+      // System group the user belongs to
+      "web_group": "www-data",
+      // Where the raw undeployed files exist
+      "assets": "/srv/assets",
+      // Default theme for the drupal install
+      "theme_default": "example",
+      // The base directory the deployments work from on server
+      "base": "/srv/www"
+  },
+  // drupal is a chef specific namespace that is required.
   "drupal": {
-// sites is the hash that contains each of your sites.
+      // sites is the hash that contains each of your sites.
       "sites": {
-// This is the beginning of the definition for a site named "drupal".
-          "drupal": {
-// If set to false the drupal deployment process will not be run.
-              "deploy": true,
-// If clean is true this will ensure a clean drupal install of the site.
-              "clean": false,
-// The number of old releases to keep on the server.
-              "releases": 1,
-// The sites files location.
-              "files": "sites/default/files",
-// The sites settings file location.
-              "settings": "sites/default/settings.php",
-// A hash containing the sites repository information.
+          // This is the beginning of the definition for a site named "example".
+          "example": {
+              // Whether or not to do anything with this drupal site during deployment, set to true to provision site
+              "active": true,
+              // Variables related to the deployment action
+              "deploy": {
+                  // Available flags: "clean" -- runs drush site-install "update"-- runs drush update-db "nothing" -- does nothing
+                  "action": "clean",
+                  // Number of previous releases to keep
+                  "releases": 1
+              },
+              "drupal": {
+                  // Metadata to allow you to query your infrastucute for specific versions Drupal
+                  "version": 7.23,
+                  // A hash of installation flags that are appended to the drush site-install command.
+                  "install": {
+                      // Instruct drush site-install to not send installation related emails.
+                      "install_configure_form.update_status_module": "'array(FALSE,FALSE)'",
+                      // Instruct drush site-install to enable clean urls.
+                      "--clean-url": 1
+                  },
+                  "settings": {
+                      // The Drupal site profile to run when performing an installation.
+                      "profile": "standard",
+                      // The location of the files for drupal
+                      "files": "sites/default/files",
+                      // If you have a custom settings.php file that you want included in the existing settings.php
+                      "custom": "sites/default/example.settings.php",
+                      // location of the settings.php file to use
+                      "settings": "sites/default/settings.php",
+                      // The Chef cookbook to use druing deployment
+                      "cookbook": "drupal",
+                      // Ruby file used to create custom.settings.php based on prior flag
+                      "template": "example.settings.php.erb",
+                      // Name of Drupal DB.
+                      "db_name": "example",
+                      // Drupal Database host
+                      "db_host": "localhost",
+                      // Database Prefix
+                      "db_prefix": "",
+                      // Database Driver
+                      "db_driver": "mysql"
+                  }
+              },
+              // A hash containing the sites repository information.
               "repository": {
-// The uri of the sites repository.
-                  "uri": "http://git.drupal.org/project/drupal.git",
-// The revision referenced in the repository eg: 'master', etc.
+                  // Repository host
+                  "host": "github.com",
+                  // The uri of the sites repository.
+                  "uri": "https://github.com/drupal/drupal.git",
+                  // The revision referenced in the repository eg: 'master', etc.
                   "revision": "7.x"
               },
-// The Drupal site profile to run when performing an installation.
-              "profile": "standard",
-// A hash of installation flags that are appended to the drush site-install command.
-              "install": {
-// Instruct drush site-install to not send installation related emails.
-                  "install_configure_form.update_status_module": "'array(FALSE,FALSE)'",
-// Instruct drush site-install to enable clean urls.
-                  "--clean-url": 1
+              // A hash containing Apache settings
+              "web_app": {
+                  "web_app": {
+                      // This is pretty complex example of the power behind the config: DO NOT USE THESE SETTINGS,
+                      // However, this shows that this is simply the apache config settings
+                      // And all can be controlled in this hash.
+                      "80": {
+                        "redirect": ["permanent / https://example.vagrant.local/"],
+                        "server_name": "example.vagrant.local"
+                      },
+                      "443": {
+                        "server_name": "example.vagrant.local",
+                        "server_aliases": ["example.vagrant.local"],
+                        "error_log": "syslog:local7",
+                        "transfer_log": "logs/ssl_access_log",
+                        "log_level": "warn",
+                        "ssl": {
+                          "ssl_engine": "on",
+                          "ssl_protocol": ["all", "-SSLv2"],
+                          "ssl_cipher_suite": ["ALL", "!ADH", "!EXPORT", "!SSLv2", "RC4+RSA", "+HIGH", "+MEDIUM", "+LOW"],
+                          "ssl_certificate_file": "/etc/httpd/ssl/cert.pem",
+                          "ssl_certificate_key_file": "/etc/httpd/ssl/key.pem"
+                        },
+                        "set_env_if": ["SetEnvIf User-Agent \".*MSIE.*\" nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0"],
+                        "custom_log": "\"|/usr/bin/logger -t httpd -p local6.info\" combined",
+                        "rewrite_engine": "On",
+                        "docroot": "/srv/www/html/example/current"
+                      }
+                  }
               }
           }
       }
@@ -286,10 +263,18 @@ drupal-lamp
         |_ cached-copy
 ```
 
-current is a symbolic link to the most recent code that has been deployed. Code is deployed each time you run a vagrant provision if you have the sites deploy flag in your json file set to true.  Each deployment creates a unix timestamped folder that contains the drupal code. You can make your modifications in this folder and have them show up in real time for the drupal site you see in your browser.
+The "folder" current is a symbolic link to the most recent code that has been deployed. Code is deployed each time you run a vagrant provision if you have the sites deploy flag in your json file set to true.  Each deployment creates a unix timestamped folder that contains the drupal code. You can make your modifications in this folder and have them show up in real time for the drupal site you see in your browser.
 
 In order to facilitate the symlinks that are necessary for this deployment strategy the files directory remains static. Each timestamped folder contains a symbolic link to the files directory to remain light weight.
 
 The releases folder contains the timestamped folders that are created when you provision.
 
 The cached-copy folder contains the initial clone of the sites repository.  This is done so that you do not need to copy the entire repository with each deployment.
+
+## Berkshelf ##
+
+Initially when the project was launched, we used submodules for the cookbooks. Since that time, we have updated to Berkshelf for handling of the cookbooks. This is a good step forward because it allows for each project to hold multiple cookbooks that are unique to the project without dealing with the mess of submodules.
+
+To customize the cookbooks, edit the Berkfile.
+
+Notice: because of the specific nature of this project with drupal, if you are looking to use the drupal install, the cookbooks currently in the Berkfile are necessary to use. However, you can try to change the version.
