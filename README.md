@@ -207,7 +207,7 @@ The structure of the json works with chef to define the attributes necessary to 
               // A hash containing Apache settings
               "web_app": {
                   "web_app": {
-                      // This is simple an example: DO NOT USE THESE SETTINGS,
+                      // This is pretty complex example of the power behind the config: DO NOT USE THESE SETTINGS,
                       // However, this shows that this is simply the apache config settings
                       // And all can be controlled in this hash.
                       "80": {
@@ -230,7 +230,7 @@ The structure of the json works with chef to define the attributes necessary to 
                         "set_env_if": ["SetEnvIf User-Agent \".*MSIE.*\" nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0"],
                         "custom_log": "\"|/usr/bin/logger -t httpd -p local6.info\" combined",
                         "rewrite_engine": "On",
-                        "docroot": "/var/www/html/example/current"
+                        "docroot": "/srv/www/html/example/current"
                       }
                   }
               }
