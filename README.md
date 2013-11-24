@@ -30,6 +30,7 @@ I'm listing virtualbox in this list only because a fair number of people use it.
   * Virtualbox 4.2.10 https://www.virtualbox.org/wiki/Download_Old_Builds
 or
   * VMware fusion 5.0.3 http://www.vmware.com/go/downloadfusion
+  * Vagrant-berkshelf 1.3.4 https://github.com/berkshelf/vagrant-berkshelf
   * If you want to access access controlled git repositories you will need to add your respective ssh keys via ssh-agent
 
 ## Step by Step ##
