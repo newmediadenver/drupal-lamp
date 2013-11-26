@@ -35,6 +35,7 @@
                   },
                   "settings": {
                       "profile": "standard",
+                      "docroot": "",
                       "files": "sites/default/files",
                       "custom": "sites/default/example.settings.php",
                       "settings": "sites/default/settings.php",
