@@ -278,3 +278,6 @@ Initially when the project was launched, we used submodules for the cookbooks. S
 To customize the cookbooks, edit the Berkfile.
 
 Notice: because of the specific nature of this project with drupal, if you are looking to use the drupal install, the cookbooks currently in the Berkfile are necessary to use. However, you can try to change the version.
+
+## NFS ##
+Read Here: [NFS](https://github.com/cyberswat/drupal-lamp/wiki/NFS)
