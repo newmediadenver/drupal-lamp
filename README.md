@@ -31,6 +31,7 @@ I'm listing virtualbox in this list only because a fair number of people use it.
 or
   * VMware fusion 5.0.3 http://www.vmware.com/go/downloadfusion
   * Vagrant-berkshelf 1.3.4 https://github.com/berkshelf/vagrant-berkshelf
+  * If using **Omnibus Chef (e.g. vagrant-omnibus)**, your first provisioning run will fail. SSH into the VM and run `sudo /opt/chef/embedded/bin/gem install mysql` to resolve this.
   * If you want to access access controlled git repositories you will need to add your respective ssh keys via ssh-agent
 
 ## Step by Step ##
