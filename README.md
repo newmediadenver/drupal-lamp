@@ -4,6 +4,10 @@ A vagrant build to run a Drupal development LAMP stack on a vmware or virtualbox
 
 Starting with a vanilla drupal core install on an ubuntu box. The goal is to easily plug in the repos and databases of projects you may be working on.  Unlike other vagrant builds for Drupal this one focuses on being the basis for team developmet in addition to being a launch point for production level deployment strategies.
 
+## Roadmap ##
+
+Please view and participate in the direction of this project https://github.com/cyberswat/drupal-lamp/issues/milestones
+
 ## Features ##
 
 The feature list is relatively specific to a Drupal workflow. There are host of customizations that are available via the Chef Recipes that are not listed here.
