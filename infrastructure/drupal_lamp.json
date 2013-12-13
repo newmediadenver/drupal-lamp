@@ -28,7 +28,7 @@
                   "releases": 1
               },
               "drupal": {
-                  "version": 7.23,
+                  "version": 8.0,
                   "install": {
                       "install_configure_form.update_status_module": "'array(FALSE,FALSE)'",
                       "--clean-url": 1
