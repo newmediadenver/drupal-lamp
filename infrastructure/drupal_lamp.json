@@ -44,12 +44,16 @@
                       "db_host": "localhost",
                       "db_prefix": "",
                       "db_driver": "mysql"
+                  },
+                  "drush": {
+                    "repository": "git@github.com:drush-ops/drush.git",
+                    "revision": "master"
                   }
               },
               "repository": {
                   "host": "github.com",
-                  "uri": "https://github.com/drupal/drupal.git",
-                  "revision": "7.x"
+                  "uri": "git@github.com:drupal/drupal.git",
+                  "revision": "8.x"
               },
               "web_app": {
                   "80": {
