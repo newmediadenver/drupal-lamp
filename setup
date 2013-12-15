@@ -1,0 +1,95 @@
+#!/bin/bash
+
+# First and foremost, this is the historically hacky first attempt. I don't
+# think bash is the way to do this, but it gets the job done. Actively seeking
+# improvements.
+
+echo ""
+echo "This script will help you bootstrap a working drupal-lamp instance. You will have the opportunity to confirm your entries before comitting. It will suggest the defauts we use to build the project."
+echo ""
+echo "This script is not intended for robust implementations. If you are exceeding it's capabilities you have outgrown it's usefulness and are manging more complexity. The solution is to use a dns server."
+echo ""
+# make sure vagrant is installed.
+command -v vagrant >/dev/null 2>&1 || { echo >&2 "I require vagrant but it's not installed.  http://www.vagrantup.com/downloads.html."; exit 1; }
+
+VAGRANTVERS=1.4.0
+# check the vagrant version
+if vagrant -v | grep -q $VAGRANTVERS ; then
+  echo "You meet the vagrant $VAGRANTVERS requirement."
+else
+  echo "You are not running vagrant $VAGRANTVERS. It is suggested that you upgrade. http://www.vagrantup.com/downloads.html"
+fi
+# Install vagrant-berkshelf plugin
+if vagrant plugin list | grep -q "vagrant-berkshelf" ; then
+    echo "Vagrant-berkshelf is installed."
+else
+    echo "executing: vagrant plugin install vagrant-berkshelf"
+    vagrant plugin install vagrant-berkshelf
+fi
+echo ""
+
+VMNAME="drupal"
+read -p "Enter the VM's name you would like to use (this is exposed in virtualbox or vmware). This will also be used as the sitename in drupal configurations. It should not contain anything but letters or numbers. [$VMNAME]: " VMNAMER
+VMNAMEU=${VMNAMER:-$VMNAME}
+
+VMIP=192.168.50.5
+read -p "Enter the VM's IP address you would like to use [$VMIP]: " VMIPR
+VMIPU=${VMIPR:-$VMIP}
+
+VMHOST="drupal.local"
+read -p "The host for the git repo you are deploying. [$VMHOST]: " VMHOSTR
+VMHOSTU=${VMHOSTR:-$VMHOST}
+echo ""
+
+ASSETS="assets"
+read -p "Files are stored and referenced by both the VM and the local machine in an assets folder. If you name it 'assets' your code will be available on the VM at /assets and available on your local machine in the assets subfolder of this project. [$ASSETS]: " ASSETSR
+ASSETSU=${ASSETSR:-$ASSETS}
+echo ""
+
+# @TODO: Yes, this is silly and shouldn't be done this way. Fix it.
+REPOHOST="github.com"
+read -p "The host for the git repo you are deploying from. [$REPOHOST]: " REPOHOSTR
+REPOHOSTU=${REPOHOSTR:-$REPOHOST}
+
+REPOURI="https://github.com:drupal/drupal.git"
+read -p "The uri of the repo. [$REPOURI]: " REPOURIR
+REPOHOSTU=${REPOURIR:-$REPOURI}
+
+REPOREVISION="8.x"
+read -p "The revision to deploy. [$REPOREVISION]: " REPOREVISIONR
+REPOREVISIONU=${REPOREVISIONR:-$REPOREVISION}
+
+echo ""
+
+# Create the assets folder to store deployable resources.
+echo "executing: mkdir -p $ASSETSU"
+sudo -u $SUDO_USER sh -c "mkdir -p $ASSETSU"
+
+if [[ $(grep -lr $VMIPU /etc/hosts) != "/etc/hosts" ]]; then
+  echo "creating host entry: $VMIPU $VMHOSTU"
+  echo "$VMIPU $VMHOSTU" >> /etc/hosts
+else
+  echo ""
+  echo "WARNING: The ip $VMIPU is already in your /etc/hosts. No modifications were performed. You will need to correct this manually."
+  echo ""
+fi
+
+sed -i -e 's/v.name\ \= \"drupal\"/v.name\ \= \"'$VMNAMEU'\"/' Vagrantfile
+sed -i -e 's/192.168.50.5/'$VMIPU'/' Vagrantfile
+sed -i -e 's/server.vm.hostname\ \= \"drupal.local\"/server.vm.hostname\ \= \"'$VMHOSTU'\"/' Vagrantfile
+sed -i -e 's/assets/'$ASSETSU'/g' Vagrantfile
+
+sed -i -e 's/host": "github.com/host": "'$REPOHOST'/g' infrastructure/drupal_lamp.json
+CLEANREPOURI=$(echo $REPOURI|sed 's/\//\\\//g')
+sed -i -e 's/uri": "git@github.com:drupal\/drupal.git/uri": "'$CLEANREPOURI'/g' infrastructure/drupal_lamp.json
+sed -i -e 's/revision": "8.x/revision": "'$REPOREVISIONU'/g' infrastructure/drupal_lamp.json
+sed -i -e '42s/drupal/'$VMNAME'/' infrastructure/drupal_lamp.json
+
+# Generate a diff for the user to know what has changed
+sudo -u $SUDO_USER sh -c "git diff > $SUDO_USER-configuration.diff"
+
+sudo -u $SUDO_USER sh -c "vagrant status"
+sudo -u $SUDO_USER sh -c "vagrant up"
+
+cd $ASSETSU
+ls -la
