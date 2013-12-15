@@ -4,6 +4,11 @@
 # think bash is the way to do this, but it gets the job done. Actively seeking
 # improvements.
 
+if [ "$(id -u)" != "0" ]; then
+   echo "This script must be run as root or using sudo." 1>&2
+   exit 1
+fi
+
 echo ""
 echo "This script will help you bootstrap a working drupal-lamp instance. You will have the opportunity to confirm your entries before comitting. It will suggest the defauts we use to build the project."
 echo ""
