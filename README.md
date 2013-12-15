@@ -88,9 +88,7 @@ drupaldev                poweroff (virtualbox)
 The VM is powered off. To restart the VM, simply run `vagrant up`
 ```
 
-Before bringing an instance online you need to download a base box. The base box is a vanilla virtual machine that the recipes get applied against.  Once you download this box it will be cached on your local machine and won't need to be downloaded again.
-
-You will need to edit the Vagrantfile at the root level of the cloned drupal-lamp repository to uncomment the url of the base box you would like to use.  Line 26 is an Ubuntu 12.04 base box that will work with VMware while line 27 provides the same box configured to work with VirtualBox. Once you've uncommented your selection you can bring the box up.  I'll stick with VirtualBox from this point forward simply because most people will be using it.  You can use the --provider flag for the vagrant command to switch to VMware (which I recommend), but that is outside the scope of these instructions.
+Base boxes are a foundational aspect of working with vagrant.  You can read more about them at https://github.com/cyberswat/drupal-lamp/wiki/Vagrant-Base-Boxes
 
 ```bash
 cyberswat:drupal-lamp/ (master✗) $ vagrant up
