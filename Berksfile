@@ -1,11 +1,12 @@
-cookbook "apache2", git: "https://github.com/opscode-cookbooks/apache2", ref: "d0ae4a3f8ea355232f597b39d95a251efdb3a6bc"
-cookbook "build-essential", git: "https://github.com/opscode-cookbooks/build-essential", ref: "2991fc6e5448e5b2378eb6882e9c1ce557d828f0"
-cookbook "database", git: "https://github.com/opscode-cookbooks/database", ref: "8f31c451d1b090165c758d37b2d4a78a533ccf31"
-cookbook "drupal", git: "https://github.com/cyberswat/drupal", ref: "5714eaf538f1e6af2f0e6b5bb51e03aa2c01085b"
-cookbook "git", git: "https://github.com/opscode-cookbooks/git", ref: "5969ae8c76dfdd6eb1a5c77deb35d7fd992fa70d"
-cookbook "dmg", git: "https://github.com/opscode-cookbooks/dmg", ref: "d8ded9d7bdb37d1867e76bbd3879b9bcd9780c7b"
-cookbook "mysql", git: "https://github.com/opscode-cookbooks/mysql", ref: "eef7e65806e7ff3bdbe148e27c447ef4a8bc3881"
-cookbook "openssl", git: "https://github.com/opscode-cookbooks/openssl", ref: "ccf81e9b3fec9427ed2e6dd76f252dcf68370379"
-cookbook "php", git: "https://github.com/opscode-cookbooks/php", ref: "177795e188572b4bd415dbf104789b11b5dabc0c"
-cookbook "ssh_known_hosts", git: "https://github.com/opscode-cookbooks/ssh_known_hosts", ref: "7be00659342ce09c9c1b472b4340b211e77131a1"
-cookbook "sudo", git: "https://github.com/opscode-cookbooks/sudo", ref: "a503303c8df8e832de5252169f4c02540b46667c"
+cookbook 'apt', '~> 2.3.0'
+cookbook 'apache2', '~> 1.8.14'
+cookbook 'build-essential', '~> 1.4.2'
+cookbook 'database', '~> 1.5.2'
+cookbook 'git', '~> 2.8.4'
+cookbook 'dmg', '~> 2.0.8'
+cookbook 'mysql', '~> 4.0.10'
+cookbook 'openssl', '~> 1.1.0'
+cookbook 'php', '~> 1.2.6'
+cookbook 'ssh_known_hosts', '~> 1.1.0'
+cookbook 'sudo', '~> 2.2.2'
+cookbook "drupal", git: "https://github.com/cyberswat/drupal", ref: "5f53835eff6f94c92fd88f768afa848e8b756a92"

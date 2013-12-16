@@ -1,4 +1,7 @@
 {
+  "build_essential": {
+    "compiletime": true
+  },
   "db": {
       "driver": "mysql",
       "client_recipe": "mysql::client",
@@ -60,7 +63,7 @@
               },
               "repository": {
                   "host": "github.com",
-                  "uri": "git@github.com:drupal/drupal.git",
+                  "uri": "https://github.com/drupal/drupal.git",
                   "revision": "8.x"
               },
               "web_app": {
