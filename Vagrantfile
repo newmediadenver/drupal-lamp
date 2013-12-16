@@ -48,7 +48,7 @@ Vagrant.configure("2") do |config|
     # server.vm.synced_folder "assets", "/assets", :nfs => false, :owner => "www-data", :group => "www-data"
     server.vm.synced_folder "assets", "/assets", :nfs => true
     server.vm.provision :chef_solo do |chef|
-      chef.log_level = :debug
+      chef.log_level = :info
       chef.roles_path = "chef/roles"
       chef.data_bags_path = "chef/data_bags"
       chef.add_role("drupal_lamp")
