@@ -88,26 +88,26 @@ else
   echo ""
 fi
 
-sed -i 's/v.name\ \= \"drupal\"/v.name\ \= \"'$VMNAMEU'\"/' Vagrantfile > temp
+sed 's/v.name\ \= \"drupal\"/v.name\ \= \"'$VMNAMEU'\"/' Vagrantfile > temp
 mv temp Vagrantfile
-sed -i 's/192.168.50.5/'$VMIPU'/' Vagrantfile > temp
+sed 's/192.168.50.5/'$VMIPU'/' Vagrantfile > temp
 mv temp Vagrantfile
-sed -i 's/server.vm.hostname\ \= \"drupal.local\"/server.vm.hostname\ \= \"'$VMHOSTU'\"/' Vagrantfile > temp
+sed 's/server.vm.hostname\ \= \"drupal.local\"/server.vm.hostname\ \= \"'$VMHOSTU'\"/' Vagrantfile > temp
 mv temp Vagrantfile
-sed -i 's/assets/'$ASSETSU'/g' Vagrantfile > temp
+sed 's/assets/'$ASSETSU'/g' Vagrantfile > temp
 mv temp Vagrantfile
-sed -i 's/drupaldev/'$VMNAMEU'/g' Vagrantfile > temp
+sed 's/drupaldev/'$VMNAMEU'/g' Vagrantfile > temp
 mv temp Vagrantfile
 
 
-sed -i 's/host": "github.com/host": "'$REPOHOST'/g' infrastructure/drupal_lamp.json > temp
+sed 's/host": "github.com/host": "'$REPOHOST'/g' infrastructure/drupal_lamp.json > temp
 mv temp infrastructure/drupal_lamp.json
 CLEANREPOURI=$(echo $REPOURI|sed 's/\//\\\//g')
-sed -i 's/uri": "git@github.com:drupal\/drupal.git/uri": "'$CLEANREPOURI'/g' infrastructure/drupal_lamp.json > temp
+sed 's/uri": "git@github.com:drupal\/drupal.git/uri": "'$CLEANREPOURI'/g' infrastructure/drupal_lamp.json > temp
 mv temp infrastructure/drupal_lamp.json
-sed -i 's/revision": "8.x/revision": "'$REPOREVISIONU'/g' infrastructure/drupal_lamp.json > temp
+sed 's/revision": "8.x/revision": "'$REPOREVISIONU'/g' infrastructure/drupal_lamp.json > temp
 mv temp infrastructure/drupal_lamp.json
-sed -i '42s/drupal/'$VMNAME'/' infrastructure/drupal_lamp.json > temp
+sed '42s/drupal/'$VMNAME'/' infrastructure/drupal_lamp.json > temp
 mv temp infrastructure/drupal_lamp.json
 
 # Generate a diff for the user to know what has changed
