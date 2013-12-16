@@ -71,10 +71,13 @@ REPOREVISIONU=${REPOREVISIONR:-$REPOREVISION}
 
 echo ""
 git clone https://github.com/cyberswat/drupal-lamp.git $VMNAME
+cd $VMNAME
+#@TODO: Remove this
+git checkout -b issue-59 origin/issue-59
 
 # Create the assets folder to store deployable resources.
 echo "executing: mkdir -p $VMNAME/$ASSETSU"
-mkdir -p $VMNAME/$ASSETSU
+mkdir -p $ASSETSU
 
 if [[ $(grep -lr $VMIPU /etc/hosts) != "/etc/hosts" ]]; then
   echo "creating host entry: $VMIPU $VMHOSTU"
@@ -85,21 +88,20 @@ else
   echo ""
 fi
 
-sed -i -e 's/v.name\ \= \"drupal\"/v.name\ \= \"'$VMNAMEU'\"/' $VMNAME/Vagrantfile
-sed -i -e 's/192.168.50.5/'$VMIPU'/' $VMNAME/Vagrantfile
-sed -i -e 's/server.vm.hostname\ \= \"drupal.local\"/server.vm.hostname\ \= \"'$VMHOSTU'\"/' $VMNAME/Vagrantfile
-sed -i -e 's/assets/'$ASSETSU'/g' $VMNAME/Vagrantfile
-sed -i -e 's/drupaldev/'$VMNAMEU'/g' $VMNAME/Vagrantfile
+sed -i -e 's/v.name\ \= \"drupal\"/v.name\ \= \"'$VMNAMEU'\"/' Vagrantfile
+sed -i -e 's/192.168.50.5/'$VMIPU'/' Vagrantfile
+sed -i -e 's/server.vm.hostname\ \= \"drupal.local\"/server.vm.hostname\ \= \"'$VMHOSTU'\"/' Vagrantfile
+sed -i -e 's/assets/'$ASSETSU'/g' Vagrantfile
+sed -i -e 's/drupaldev/'$VMNAMEU'/g' Vagrantfile
 
 
-sed -i -e 's/host": "github.com/host": "'$REPOHOST'/g' $VMNAME/infrastructure/drupal_lamp.json
+sed -i -e 's/host": "github.com/host": "'$REPOHOST'/g' infrastructure/drupal_lamp.json
 CLEANREPOURI=$(echo $REPOURI|sed 's/\//\\\//g')
-sed -i -e 's/uri": "git@github.com:drupal\/drupal.git/uri": "'$CLEANREPOURI'/g' $VMNAME/infrastructure/drupal_lamp.json
-sed -i -e 's/revision": "8.x/revision": "'$REPOREVISIONU'/g' $VMNAME/infrastructure/drupal_lamp.json
-sed -i -e '42s/drupal/'$VMNAME'/' $VMNAME/infrastructure/drupal_lamp.json
+sed -i -e 's/uri": "git@github.com:drupal\/drupal.git/uri": "'$CLEANREPOURI'/g' infrastructure/drupal_lamp.json
+sed -i -e 's/revision": "8.x/revision": "'$REPOREVISIONU'/g' infrastructure/drupal_lamp.json
+sed -i -e '42s/drupal/'$VMNAME'/' infrastructure/drupal_lamp.json
 
 # Generate a diff for the user to know what has changed
-git --git-dir $VMNAME/.git --work-tree $VMNAME diff > $USER-$VMNAME-setup.diff
-cd $VMNAME
+git diff > ../$USER-$VMNAME-setup.diff
 vagrant status $VMNAME
 vagrant up $VMNAME
