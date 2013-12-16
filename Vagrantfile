@@ -25,13 +25,14 @@ data = JSON.parse(File.read("infrastructure/drupal_lamp.json"))
 Vagrant.configure("2") do |config|
   # config.nfs.map_uid = 0
   # config.nfs.map_gid = 0
+  config.omnibus.chef_version = :latest
   config.berkshelf.enabled = true
   config.berkshelf.berksfile_path = File.dirname(__FILE__) + "/Berksfile"
-  config.vm.define :drupaldev do |server|
+  config.vm.define :drupal do |server|
     server.ssh.forward_agent = true
     server.vm.box = "precise64"
     #server.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-fusion503.box"
-    #server.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210.box"
+    server.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210.box"
 
     server.vm.provider "vmware_fusion" do |v|
       v.vmx["memsize"]  = "1024"
@@ -47,7 +48,7 @@ Vagrant.configure("2") do |config|
     server.vm.synced_folder "assets", "/assets", :nfs => false, :owner => "www-data", :group => "www-data"
     # server.vm.synced_folder "assets", "/assets", :nfs => true
     server.vm.provision :chef_solo do |chef|
-      chef.log_level = :info
+      chef.log_level = :debug
       chef.roles_path = "chef/roles"
       chef.data_bags_path = "chef/data_bags"
       chef.add_role("drupal_lamp")
