@@ -79,7 +79,7 @@ mkdir -p $ASSETSU
 
 if [[ $(grep -lr $VMIPU /etc/hosts) != "/etc/hosts" ]]; then
   echo "creating host entry: $VMIPU $VMHOSTU"
-  sudo -u $SUDO_USER sh -c "echo '$VMIPU $VMHOSTU' >> /etc/hosts"
+  sudo -u root sh -c "echo '$VMIPU $VMHOSTU' >> /etc/hosts"
 else
   echo ""
   echo "WARNING: The ip $VMIPU is already in your /etc/hosts. No modifications were performed. You will need to correct this manually."
