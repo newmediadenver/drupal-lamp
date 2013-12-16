@@ -72,8 +72,6 @@ REPOREVISIONU=${REPOREVISIONR:-$REPOREVISION}
 echo ""
 git clone https://github.com/cyberswat/drupal-lamp.git $VMNAME
 cd $VMNAME
-#@TODO: Remove this
-git checkout -b issue-59 origin/issue-59
 
 # Create the assets folder to store deployable resources.
 echo "executing: mkdir -p $VMNAME/$ASSETSU"
