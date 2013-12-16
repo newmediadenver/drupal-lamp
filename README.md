@@ -4,6 +4,17 @@ A vagrant build to run a Drupal development LAMP stack on a vmware or virtualbox
 
 Starting with a vanilla drupal core install on an ubuntu box. The goal is to easily plug in the repos and databases of projects you may be working on.  Unlike other vagrant builds for Drupal this one focuses on being the basis for team developmet in addition to being a launch point for production level deployment strategies.
 
+## Important! ##
+There has been a decent amount of activity in the master branch.  The last stable is tagged so that you can download it. The new approach is a vast improvement, and as such, I would not recommend that anyone use it.
+
+The biggest change comes in https://github.com/cyberswat/drupal-lamp/issues/59.  This gives you the ability to quickly launch a configured VM by executing the following command.  You should have vagrant and virtualbox already installed. The setup will prompt you for relevant information.  I've been developing so far with the defaults in the script and it seems to work.
+````
+bash <(curl https://raw.github.com/cyberswat/drupal-lamp/master/setup)
+````
+All of the remaining documentation on this page is going to be cleaned up and moved into the wiki. Leaving it here until that is done.
+
+There are still some bugs but they are being resolved.  Do not expect master to be production ready code yet.
+
 ## Roadmap ##
 
 Please view and participate in the direction of this project https://github.com/cyberswat/drupal-lamp/issues/milestones
