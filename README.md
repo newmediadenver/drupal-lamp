@@ -12,4 +12,4 @@ To install drupal-lamp run:
 ````
 bash <(curl https://raw.github.com/cyberswat/drupal-lamp/master/setup)
 ````
-If you would like a deeper understanding too utilize this project as a regular tool for your work or as a basis for your teams, [you should help in the wiki](https://github.com/cyberswat/drupal-lamp/wiki/_pages).
+If you would like a deeper understanding to utilize this project as a regular tool for individuals or teams, [you should help in the wiki](https://github.com/cyberswat/drupal-lamp/wiki/_pages) [or simply provide feedback in the issue queue](https://github.com/cyberswat/drupal-lamp/issues).
