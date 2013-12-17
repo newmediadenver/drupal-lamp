@@ -12,7 +12,7 @@ To install drupal-lamp run:
 ````
 bash <(curl https://raw.github.com/cyberswat/drupal-lamp/master/setup)
 ````
-If you would like a deeper understanding to utilize this project as a regular tool for individuals or teams, [you should help in the wiki](https://github.com/cyberswat/drupal-lamp/wiki/_pages) [or simply provide feedback in the issue queue](https://github.com/cyberswat/drupal-lamp/issues).
+If you would like a deeper understanding to utilize this project as a regular tool for individuals or teams, [you should help in the wiki](https://github.com/cyberswat/drupal-lamp/wiki/_pages), [or simply provide feedback in the issue queue](https://github.com/cyberswat/drupal-lamp/issues).
 ## Why are you doing this? ##
 There's a big, complex problem that is instantly born when someone has the thought "I need to spin up a new drupal site."  Personally, I'm tired of having to spend any time thinking about how to do that. The conversation is relevant and it is gaining momentum. Send new conversations that should be listed here to @cyberswat
 
