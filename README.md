@@ -1,6 +1,6 @@
 # drupal-lamp #
 
-A vagrant build to run a Drupal development LAMP stack designed to serve as a focal point for best practices in the community.
+A vagrant build to run a Drupal LAMP stack utilizing best practices.
 
 We would essentially like to completely remove the complexity of managing anything related to a Drupal LAMP stack from developers and site builders. It is our intent to make this a focal point of best practices that can be applied consistently to support Drupal.  [Interact with the roadmap](https://github.com/cyberswat/drupal-lamp/issues/milestones) to help direct this project.
 
