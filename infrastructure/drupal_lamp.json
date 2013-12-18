@@ -32,7 +32,7 @@
   },
   "drupal": {
       "drush": {
-        "repository": "git@github.com:drush-ops/drush.git",
+        "repository": "https://github.com/drush-ops/drush.git",
         "revision": "master"
       },
       "sites": {
