@@ -19,7 +19,7 @@
       "web_user": "www-data",
       "web_group": "www-data",
       "assets": "/srv/assets",
-      "theme_default": "mydcsd",
+      "theme_default": "mytheme",
       "base": "/srv/www"
   },
   "php": {
@@ -32,7 +32,7 @@
   },
   "drupal": {
       "drush": {
-        "repository": "git@github.com:drush-ops/drush.git",
+        "repository": "https://github.com/drush-ops/drush.git",
         "revision": "master"
       },
       "sites": {
