@@ -19,7 +19,6 @@
       "web_user": "www-data",
       "web_group": "www-data",
       "assets": "/srv/assets",
-      "theme_default": "mydcsd",
       "base": "/srv/www"
   },
   "php": {
