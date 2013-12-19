@@ -13,7 +13,7 @@ command -v vagrant >/dev/null 2>&1 || { echo >&2 "I require vagrant but it's not
 # make sure git is installed.
 command -v git >/dev/null 2>&1 || { echo >&2 "I require git but it's not installed."; exit 1; }
 
-VAGRANTVERS=1.4.0
+VAGRANTVERS>=1.4.0
 # check the vagrant version
 if vagrant -v | grep -q $VAGRANTVERS ; then
   echo "You meet the vagrant $VAGRANTVERS requirement."
