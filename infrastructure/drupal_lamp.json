@@ -51,10 +51,19 @@
                   "settings": {
                       "profile": "standard",
                       "files": "sites/default/files",
-                      "custom": "sites/default/example.settings.php",
-                      "settings": "sites/default/settings.php",
                       "cookbook": "drupal",
-                      "template": "example.settings.php.erb",
+                      "settings": {
+                        "default": {
+                          "location": "sites/default/settings.php"
+                        },
+                        "example_template": {
+                          "location": "sites/default/example.settings.php",
+                          "template": "example.settings.php.erb"
+                        },
+                        "example_static": {
+                          "location": "profiles/standard/standard.settings.php"
+                        }
+                      },
                       "db_name": "example",
                       "db_host": "localhost",
                       "db_prefix": "",
