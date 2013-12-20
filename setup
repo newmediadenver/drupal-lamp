@@ -29,12 +29,21 @@ else
 fi
 echo ""
 
-# Install vagrant-berkshelf plugin
+# Install vagrant-omnibus plugin
 if vagrant plugin list | grep -q "vagrant-omnibus" ; then
     echo "Vagrant-omnibus is installed."
 else
     echo "executing: vagrant plugin install vagrant-omnibus"
     vagrant plugin install vagrant-omnibus
+fi
+echo ""
+
+# Install vagrant-vbguestplugin
+if vagrant plugin list | grep -q "vagrant-vbguest" ; then
+    echo "vagrant-vbguest is installed."
+else
+    echo "executing: vagrant plugin install vagrant-vbguest"
+    vagrant plugin install vagrant-vbguest
 fi
 echo ""
 
