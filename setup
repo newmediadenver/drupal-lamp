@@ -79,11 +79,11 @@ read -p "The revision to deploy. [$REPOREVISION]: " REPOREVISIONR
 REPOREVISIONU=${REPOREVISIONR:-$REPOREVISION}
 
 echo ""
-git clone https://github.com/cyberswat/drupal-lamp.git $VMNAME
-cd $VMNAME
+git clone https://github.com/cyberswat/drupal-lamp.git $VMNAMEU
+cd $VMNAMEU
 
 # Create the assets folder to store deployable resources.
-echo "executing: mkdir -p $VMNAME/$ASSETSU"
+echo "executing: mkdir -p $VMNAMEU/$ASSETSU"
 mkdir -p $ASSETSU
 
 if [[ $(grep -lr $VMIPU /etc/hosts) != "/etc/hosts" ]]; then
@@ -114,10 +114,10 @@ sed 's/uri": "git@github.com:drupal\/drupal.git/uri": "'$CLEANREPOURI'/g' infras
 mv temp infrastructure/drupal_lamp.json
 sed 's/revision": "8.x/revision": "'$REPOREVISIONU'/g' infrastructure/drupal_lamp.json > temp
 mv temp infrastructure/drupal_lamp.json
-sed '42s/drupal/'$VMNAME'/' infrastructure/drupal_lamp.json > temp
+sed '42s/drupal/'$VMNAMEU'/' infrastructure/drupal_lamp.json > temp
 mv temp infrastructure/drupal_lamp.json
 
 # Generate a diff for the user to know what has changed
-git diff > ../$USER-$VMNAME-setup.diff
-vagrant status $VMNAME
-vagrant up $VMNAME
+git diff > ../$USER-$VMNAMEU-setup.diff
+vagrant status $VMNAMEU
+vagrant up $VMNAMEU
