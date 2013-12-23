@@ -19,3 +19,4 @@ There's a big, complex problem that is instantly born when someone has the thoug
 * https://groups.drupal.org/node/314508#comment-958458
 * http://www.mediacurrent.com/blog/better-local-development-vagrant
 * https://github.com/proviso/proviso
+* https://github.com/Automattic/vip-quickstart
