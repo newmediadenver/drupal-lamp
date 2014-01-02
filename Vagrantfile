@@ -20,7 +20,7 @@ require 'json'
   https://github.com/cyberswat/drupal-lamp/wiki/Vagrant-Base-Boxes
 
 =end
-data = JSON.parse(File.read("infrastructure/drupal_lamp.json"))
+data = JSON.parse(File.read(File.dirname(__FILE__) + "/infrastructure/drupal_lamp.json"))
 
 Vagrant.configure("2") do |config|
   config.nfs.map_uid = :auto
