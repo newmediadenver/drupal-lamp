@@ -15,13 +15,6 @@
         "debian": "debian"
       }
   },
-  "server": {
-      "web_user": "www-data",
-      "web_group": "www-data",
-      "assets": "/srv/assets",
-      "theme_default": "mytheme",
-      "base": "/srv/www"
-  },
   "php": {
     "directives": {
       "memory_limit": "1024M",
@@ -31,6 +24,12 @@
     "conf_dir" : "/etc/php5/apache2"
   },
   "drupal": {
+    "server": {
+      "web_user": "www-data",
+      "web_group": "www-data",
+      "assets": "/srv/assets",
+      "base": "/srv/www"
+    },
       "drush": {
         "repository": "https://github.com/drush-ops/drush.git",
         "revision": "master"
