@@ -34,10 +34,17 @@ config.nfs.map_gid = :auto
 # destination in your drupal_lamp.json file
 server.vm.synced_folder "assets", "/assets", :nfs => true 
 ````
-3. Vagrant reload
+Vagrant reload
 
 #### Vagrant synced folders (slower)
 see [Synced folders in Vagrant Docs](https://docs.vagrantup.com/v2/synced-folders/basic_usage.html)
+Add code/uncomment in Vagrantfile
+````
+# For Vagrant synced folders
+# Ensure the second parameter (/assets) is the same as the Default['drupal']['server']['assets'] 
+# destination in your drupal_lamp.json file
+server.vm.synced_folder "assets", "/assets", :nfs => false, :owner => "www-data", :group => "www-data"
+````
 
 
 Known "plug-ins" for drupal-lamp
