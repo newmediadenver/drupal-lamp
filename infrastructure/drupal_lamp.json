@@ -27,7 +27,7 @@
     "server": {
       "web_user": "www-data",
       "web_group": "www-data",
-      "assets": "/srv/assets",
+      "assets": "/assets",
       "base": "/srv/www"
     },
       "drush": {
