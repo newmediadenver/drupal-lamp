@@ -2,7 +2,7 @@
 
 A vagrant build to run a Drupal LAMP stack utilizing best practices.
 
-We would essentially like to completely remove the complexity of managing anything related to a Drupal LAMP stack from developers and site builders. It is our intent to make this a focal point of best practices that can be applied consistently to support Drupal.  [Interact with the roadmap](https://github.com/newmediadenver/drupal-lamp/issues/milestones) to help direct this project.
+Our vision is to aid the Drupal Community by removing the complexity of managing a development environment and to offer a bridge to maintain parity and best practices when going live.  [Interact with the roadmap](https://github.com/newmediadenver/drupal-lamp/issues/milestones) to help direct this project.
 
 There are two requirements that you need to manage before you can begin.
 * You need to install virtualbox https://www.virtualbox.org/wiki/Downloads
