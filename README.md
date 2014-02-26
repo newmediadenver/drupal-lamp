@@ -11,8 +11,48 @@ There are two requirements that you need to manage before you can begin.
 * You need to install virtualbox https://www.virtualbox.org/wiki/Downloads
 * You need to install vagrant 1.4.0 or greater http://www.vagrantup.com/downloads.html
 
+Installation
+------------
+To install drupal lamp, you must have Vagrant and Virtual box already installed.
+
+On Macs:
+```
+cd ~/
+mkdir ~/vagrant
+cd vagrant
+git clone git@github.com:newmediadenver/drupal-lamp.git
+cd drupal-lamp
+mkdir assets
+vagrant install plugin vagrant-berkshelf
+```
+
+Now, you will have all the proper folders and files in place to run drupal lamp
+as an example site. However, what fun is that?!
+
+To customize drupal-lamp to use you specific site, you will need to edit the file
+located at ```infrastructure/drupal_lamp.json```. See Below for the details on configuration
+of sites.
+
+Once you have updated the json, you will run the command:
+
+```
+vagrant up
+```
+
+The command will provision the machine and have you up and running in relatively no
+time.
+
+
 Configuration
 -------------
+### drupal_lamp.json
+
+AKA, One File to Rule them all (kinda). This file houses the configuration for the
+cookbooks used in this vagrant-chef pairing. For each top level hash (drupal, php, mysql, etc),
+there is a corresponding cookbook for that site. For all the options available to set,
+see that cookbooks repo. ** If you are curious where a cookbook comes from, look in the
+berksfile **
+
 ### Drupal
 see [Drupal chef cookbook](http://github.com/newmediadenver/drupal)
 
@@ -30,9 +70,9 @@ config.nfs.map_gid = :auto
 
 ...
 # for Vagrant nfs support
-# Ensure the second parameter (/assets) is the same as the Default['drupal']['server']['assets'] 
+# Ensure the second parameter (/assets) is the same as the Default['drupal']['server']['assets']
 # destination in your drupal_lamp.json file
-server.vm.synced_folder "assets", "/assets", :nfs => true 
+server.vm.synced_folder "assets", "/assets", :nfs => true
 ````
 Vagrant reload
 
@@ -41,7 +81,7 @@ see [Synced folders in Vagrant Docs](https://docs.vagrantup.com/v2/synced-folder
 Add code/uncomment in Vagrantfile
 ````
 # For Vagrant synced folders
-# Ensure the second parameter (/assets) is the same as the Default['drupal']['server']['assets'] 
+# Ensure the second parameter (/assets) is the same as the Default['drupal']['server']['assets']
 # destination in your drupal_lamp.json file
 server.vm.synced_folder "assets", "/assets", :nfs => false, :owner => "www-data", :group => "www-data"
 ````
