@@ -15,7 +15,6 @@ Installation
 ------------
 To install drupal lamp, you must have Vagrant and Virtual box already installed.
 
-On Macs:
 ```
 cd ~/
 mkdir ~/vagrant
@@ -25,6 +24,7 @@ cd drupal-lamp
 mkdir assets
 vagrant install plugin vagrant-berkshelf
 ```
+*Note:* If you are on Mavericks, you will need to run: ```sudo /Library/StartupItems/VirtualBox/VirtualBox restart``` to get up and running.
 
 Now, you will have all the proper folders and files in place to run drupal lamp
 as an example site. However, what fun is that?!
