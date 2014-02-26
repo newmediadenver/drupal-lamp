@@ -23,8 +23,10 @@ require 'json'
 data = JSON.parse(File.read(File.dirname(__FILE__) + "/infrastructure/drupal_lamp.json"))
 
 Vagrant.configure("2") do |config|
+  # for Vagrant nfs support
   config.nfs.map_uid = :auto
   config.nfs.map_gid = :auto
+
   config.omnibus.chef_version = :latest
   config.berkshelf.enabled = true
   config.berkshelf.berksfile_path = File.dirname(__FILE__) + "/Berksfile"
@@ -43,10 +45,20 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--memory", "1024"]
     end
 
-    server.vm.network :private_network, ip: "192.168.50.5"
     server.vm.hostname = "drupal.local"
+
+    server.vm.network :private_network, ip: "192.168.50.5"
+    
+    # For Vagrant synced folders
+    # Ensure the second parameter (/assets) is the same as the Default['drupal']['server']['assets'] 
+    # destination in your drupal_lamp.json file
     # server.vm.synced_folder "assets", "/assets", :nfs => false, :owner => "www-data", :group => "www-data"
-    server.vm.synced_folder "assets", "/assets", :nfs => true
+    
+    # For Vagrant nfs support
+    # Ensure the second parameter (/assets) is the same as the Default['drupal']['server']['assets'] 
+    # destination in your drupal_lamp.json file
+    server.vm.synced_folder "assets", "/assets", :nfs => true 
+
     server.vm.provision :chef_solo do |chef|
       chef.log_level = :info
       chef.roles_path = "chef/roles"

@@ -81,7 +81,7 @@ read -p "The revision to deploy. [$REPOREVISION]: " REPOREVISIONR
 REPOREVISIONU=${REPOREVISIONR:-$REPOREVISION}
 
 echo ""
-git clone https://github.com/cyberswat/drupal-lamp.git $VMNAMEU
+git clone https://github.com/newmediadenver/drupal-lamp.git $VMNAMEU
 cd $VMNAMEU
 
 # Create the assets folder to store deployable resources.
