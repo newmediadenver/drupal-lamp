@@ -18,15 +18,21 @@ see [Drupal chef cookbook](http://github.com/newmediadenver/drupal)
 
 ### Create a file share
 
-#### Vagrant nfs
+#### Drupal-NFS (Set up a NFS share on the VM, mount it on your local machine)
+This is the speediest option and is compatible with any system that can mount
+NFS shares.
+
+see [Drupal-NFS cookbook](https://github.com/arknoll/drupal-nfs)
+
+#### Vagrant-provided nfs (Vagrant sets up a NFS share on your local machine, then mounts it on the VM.)
 see [NFS in Vagrant Docs](https://docs.vagrantup.com/v2/synced-folders/nfs.html)
 
 1. Get required prerequisits (see Vagrant Doc)
 2. Add code/uncomment in Vagrantfile
 ````
 # for Vagrant nfs support
-config.nfs.map_uid = :auto
-config.nfs.map_gid = :auto
+config.nfs.map_uid = 0
+config.nfs.map_gid = 0
 
 ...
 # for Vagrant nfs support
@@ -36,7 +42,7 @@ server.vm.synced_folder "assets", "/assets", :nfs => true
 ````
 Vagrant reload
 
-#### Vagrant synced folders (slower)
+#### Vagrant synced folders (slower - Vagrant sets up a virtualbox share on your local machine, then mounts it on the VM.)
 see [Synced folders in Vagrant Docs](https://docs.vagrantup.com/v2/synced-folders/basic_usage.html)
 Add code/uncomment in Vagrantfile
 ````
@@ -53,6 +59,10 @@ Known "plug-ins" for drupal-lamp
 1. Add the cookbook to the Berksfile
 2. Add the role to the chef/roles/drupal_lamp.rb
 3. Modify any attributes in your drupal_lamp.json if necessary
+
+### Drupal-NFS
+Allows you to expose and configure NFS shares on the VM.
+see [Drupal-NFS cookbook](https://github.com/arknoll/drupal-nfs)
 
 ### Drupal-solr
 Installs Apache Solr on your virtual machine.
