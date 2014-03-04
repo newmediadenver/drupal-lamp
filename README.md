@@ -112,6 +112,9 @@ see [Drupal solr cookbook](http://github.com/arknoll/drupal)
 Installs [Codeception](http://codeception.com/) testing framework on your virtual machine.
 see [Drupal codeception cookbook](http://github.com/arknoll/drupal-codeception)
 
+### Drupal-frontend
+Adds CSS Preprocessing on spin up. More coolness to come.
+See [Drupal Frontend](http://github.com/timodwhit/drupal-frontend)
 
 Contributing
 ------------
