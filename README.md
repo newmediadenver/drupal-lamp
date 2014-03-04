@@ -103,7 +103,7 @@ Installs [Codeception](http://codeception.com/) testing framework on your virtua
 see [Drupal codeception cookbook](http://github.com/arknoll/drupal-codeception)
 
 ### Drupal-frontend
-Installs the ability to CSS Preprocessing on spin up.
+Adds CSS Preprocessing on spin up. More coolnees to come.
 See [Drupal Frontend](http://github.com/timodwhit/drupal-frontend)
 
 Contributing
