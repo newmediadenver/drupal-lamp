@@ -116,6 +116,10 @@ see [Drupal codeception cookbook](http://github.com/arknoll/drupal-codeception)
 Adds CSS Preprocessing on spin up. More coolness to come.
 See [Drupal Frontend](http://github.com/timodwhit/drupal-frontend)
 
+### Create a self-signed ssl certificate
+See wiki [SSL in a dev environment](https://github.com/newmediadenver/drupal-lamp/wiki/SSL-in-a-dev-environment)
+
+
 Contributing
 ------------
 
