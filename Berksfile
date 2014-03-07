@@ -9,4 +9,4 @@ cookbook 'openssl', '~> 1.1.0'
 cookbook 'php', '~> 1.2.6'
 cookbook 'ssh_known_hosts', '~> 1.1.0'
 cookbook 'sudo', '~> 2.2.2'
-cookbook "drupal", git: "https://github.com/newmediadenver/drupal", ref: "295cf0bc54bc373426b9f8b63b35fb4d7a3cd6b5"
+cookbook "drupal", git: "https://github.com/newmediadenver/drupal", ref: "32bf3bbeb9bde8d242a61be173ccb63fd18d1ec0"
