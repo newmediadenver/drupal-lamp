@@ -3,7 +3,10 @@ require "rspec/core/rake_task"
 require "rubocop/rake_task"
 
 desc "Run RuboCop style and lint checks"
-Rubocop::RakeTask.new(:rubocop)
+Rubocop::RakeTask.new(:rubocop) do |task|
+  # don't abort rake on failure
+  task.fail_on_error = false
+end
 
 desc "Run Foodcritic lint checks"
 FoodCritic::Rake::LintTask.new(:foodcritic) do |t|
