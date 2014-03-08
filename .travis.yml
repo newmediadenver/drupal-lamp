@@ -4,6 +4,6 @@ rvm:
   - 1.9.3
   - 2.0.0
 
-install: bundle install --without=integration
+install: bundle install
 
 script: bundle exec rake test
