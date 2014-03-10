@@ -22,7 +22,7 @@ cd vagrant
 git clone git@github.com:newmediadenver/drupal-lamp.git
 cd drupal-lamp
 mkdir assets
-vagrant install plugin vagrant-berkshelf
+vagrant plugin install vagrant-berkshelf
 ```
 *Note:* If you are on Mavericks, you will need to run: ```sudo /Library/StartupItems/VirtualBox/VirtualBox restart``` to get up and running.
 
