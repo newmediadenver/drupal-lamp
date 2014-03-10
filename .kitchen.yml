@@ -7,7 +7,17 @@ provisioner:
 
 platforms:
   - name: ubuntu-12.04
-
+    driver_config:
+      box: precise64
+      box_url: http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210.box
+      provider: virtualbox
+      customize:
+        memory: 1024
+      network:
+        - ["private_network", {ip: "192.168.50.5"}]
+      use_vagrant_provision: true
+      require_chef_omnibus: true
+      forward_agent: true
 suites:
   - name: default
     run_list:
@@ -23,8 +33,9 @@ suites:
       - recipe[drupal::drush]
       - recipe[drupal::mysql]
       - recipe[drupal]
-    data_bags_path: test/integration/data_bags
+    data_bags_path: chef/data_bags
     data_path: test/integration/data
+    role_path: chef/roles
     attributes:
       build_essential:
         compiletime: true
