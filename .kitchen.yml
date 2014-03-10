@@ -24,13 +24,14 @@ suites:
       - recipe[drupal::mysql]
       - recipe[drupal]
     data_bags_path: test/integration/data_bags
+    data_path: test/integration/data
     attributes:
       build_essential:
         compiletime: true
       mysql:
-        server_root_password: iloverandompasswordsbutthiswilldo
-        server_repl_password: iloverandompasswordsbutthiswilldo
-        server_debian_password: iloverandompasswordsbutthiswilldo
+        server_root_password: root
+        server_repl_password: root
+        server_debian_password: root
       db:
         driver: "mysql"
         client_recipe: "mysql::client"
@@ -56,7 +57,9 @@ suites:
           example:
             active: true
             deploy:
-              action: ["deploy"]
+              action:
+                - deploy
+                - install
               releases: 1
             drupal:
               version: "7.26"
