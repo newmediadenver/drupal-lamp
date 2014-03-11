@@ -1,10 +1,9 @@
 ---
 driver:
   name: vagrant
-
+  vagrantfile_erb: test/integration/templates/Vagrantfile.erb
 provisioner:
   name: chef_solo
-
 platforms:
   - name: ubuntu-12.04
     driver_config:
@@ -20,29 +19,14 @@ platforms:
       forward_agent: true
 suites:
   - name: default
-    run_list:
-      - recipe[apt]
-      - recipe[build-essential]
-      - recipe[drupal::init]
-      - recipe[sudo]
-      - recipe[git]
-      - recipe[mysql::server]
-      - recipe[drupal::ssh]
-      - recipe[drupal::apache]
-      - recipe[drupal::php]
-      - recipe[drupal::drush]
-      - recipe[drupal::mysql]
-      - recipe[drupal]
     data_bags_path: chef/data_bags
     data_path: test/integration/data
-    role_path: chef/roles
+    roles_path: chef/roles
+    run_list:
+      "role[drupal_lamp]"
     attributes:
       build_essential:
         compiletime: true
-      mysql:
-        server_root_password: root
-        server_repl_password: root
-        server_debian_password: root
       db:
         driver: "mysql"
         client_recipe: "mysql::client"
