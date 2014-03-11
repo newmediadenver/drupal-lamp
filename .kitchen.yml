@@ -1,7 +1,6 @@
 ---
 driver:
   name: vagrant
-  vagrantfile_erb: test/integration/templates/Vagrantfile.erb
 provisioner:
   name: chef_solo
 platforms:
@@ -22,8 +21,11 @@ suites:
     data_bags_path: chef/data_bags
     data_path: test/integration/data
     roles_path: chef/roles
+    provisioner:
+      client_rb:
+        environment: _default
     run_list:
-      "role[drupal_lamp]"
+      role[drupal_lamp]
     attributes:
       build_essential:
         compiletime: true
