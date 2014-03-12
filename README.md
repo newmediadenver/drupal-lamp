@@ -29,11 +29,14 @@ vagrant plugin install vagrant-berkshelf
 Now, you will have all the proper folders and files in place to run drupal lamp
 as an example site. However, what fun is that?!
 
-To customize drupal-lamp to use you specific site, you will need to edit the file
+To customize drupal-lamp to use your specific site, you will need to edit the file
 located at ```infrastructure/drupal_lamp.json```. See Below for the details on configuration
 of sites.
 
 Once you have updated the json, you will run the command:
+
+NOTE: Make sure that you have a data-bag associated with the site(s). See below for info
+about data-bags.
 
 ```
 vagrant up
@@ -54,7 +57,15 @@ see that cookbooks repo. ** If you are curious where a cookbook comes from, look
 berksfile **
 
 ### Drupal
-see [Drupal chef cookbook](http://github.com/newmediadenver/drupal)
+See [Drupal chef cookbook](http://github.com/newmediadenver/drupal)
+
+#### Data Bags (Hash or Mash)
+If you make a new or edit the existing site id in the drupal_lamp.json, you will
+need to create a databag for that site with the same id as the site name. Steps to do so:
+
+1. ```cp chef/data_bags/sites/example.json chef/data_bags/sites/[site_name].json```
+1. Now edit the [site_name].json and change id of the site id.
+1. Edit the info for your site.
 
 ### Create a file share
 
