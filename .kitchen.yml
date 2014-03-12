@@ -1,0 +1,235 @@
+---
+driver:
+  name: vagrant
+provisioner:
+  name: chef_solo
+platforms:
+  - name: ubuntu-12.04
+    driver_config:
+      box: precise64
+      box_url: http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210.box
+      provider: virtualbox
+      customize:
+        memory: 1024
+      network:
+        - ["private_network", {ip: "192.168.50.5"}]
+      use_vagrant_provision: true
+      require_chef_omnibus: true
+      forward_agent: true
+suites:
+  - name: default
+    data_bags_path: chef/data_bags
+    data_path: test/integration/data
+    roles_path: chef/roles
+    provisioner:
+      client_rb:
+        environment: _default
+    run_list:
+      role[drupal_lamp]
+    attributes:
+      build_essential:
+        compiletime: true
+      db:
+        driver: "mysql"
+        client_recipe: "mysql::client"
+        root: "root"
+        grant_hosts: ["localhost"]
+        users:
+          root: "root"
+          replication: "replication"
+          debian: "debian"
+      php:
+        directives:
+          memory_limit: "1024M"
+          upload_max_filesize: "200M"
+          post_max_size: "210M"
+        conf_dir: "/etc/php5/apache2"
+      drupal:
+        server:
+          web_user: "www-data"
+          web_group: "www-data"
+          assets: "/assets"
+          base: "/srv/www"
+        sites:
+          example:
+            active: true
+            deploy:
+              action:
+                - deploy
+                - install
+              releases: 1
+            drupal:
+              version: "7.26"
+              install:
+                install_configure_form.update_status_module: "'array(FALSE,FALSE)'"
+                "--clean-url": 1
+              settings:
+                profile: "standard"
+                files: "sites/default/files"
+                cookbook: "drupal"
+                settings:
+                  default:
+                    location: "sites/default/settings.php"
+                  example_template:
+                    location: "sites/default/example.settings.php"
+                    template: "example.settings.php.erb"
+                  example_static:
+                    location: "profiles/standard/standard.settings.php"
+                db_name: "example"
+                db_host: "localhost"
+                db_prefix: ""
+                db_driver: "mysql"
+                db_file: ""
+            repository:
+              host: "github.com"
+              uri: "https://github.com/drupal/drupal.git"
+              revision: "7.26"
+            web_app:
+              "80":
+                server_name: "drupal.local"
+                rewrite_engine: "On"
+                docroot: "/srv/www/example/current"
+  - name: make
+    data_bags_path: chef/data_bags
+    data_path: test/integration/data
+    roles_path: chef/roles
+    provisioner:
+      client_rb:
+        environment: _default
+    run_list:
+      role[drupal_lamp]
+    attributes:
+      build_essential:
+        compiletime: true
+      db:
+        driver: "mysql"
+        client_recipe: "mysql::client"
+        root: "root"
+        grant_hosts: ["localhost"]
+        users:
+          root: "root"
+          replication: "replication"
+          debian: "debian"
+      php:
+        directives:
+          memory_limit: "1024M"
+          upload_max_filesize: "200M"
+          post_max_size: "210M"
+        conf_dir: "/etc/php5/apache2"
+      drupal:
+        server:
+          web_user: "www-data"
+          web_group: "www-data"
+          assets: "/assets"
+          base: "/srv/www"
+        sites:
+          example:
+            active: true
+            deploy:
+              action:
+                - deploy
+                - install
+              releases: 1
+            drush_make:
+              api: 2
+              files:
+                core: "drupal-org-core.make"
+              template: true
+            drupal:
+              version: "7.26"
+              install:
+                install_configure_form.update_status_module: "'array(FALSE,FALSE)'"
+                "--clean-url": 1
+              settings:
+                profile: "standard"
+                files: "sites/default/files"
+                cookbook: "drupal"
+                settings:
+                  default:
+                    location: "sites/default/settings.php"
+                db_name: "example"
+                db_host: "localhost"
+                db_prefix: ""
+                db_driver: "mysql"
+                db_file: ""
+            repository:
+              host: "github.com"
+              uri: "https://github.com/commerceguys/commerce_kickstart.git"
+              revision: "7.x-2.13"
+            web_app:
+              "80":
+                server_name: "drupal.local"
+                rewrite_engine: "On"
+                docroot: "/srv/www/example/current"
+  - name: import
+    data_bags_path: chef/data_bags
+    data_path: test/integration/data
+    roles_path: chef/roles
+    provisioner:
+      client_rb:
+        environment: _default
+    run_list:
+      role[drupal_lamp]
+    attributes:
+      build_essential:
+        compiletime: true
+      db:
+        driver: "mysql"
+        client_recipe: "mysql::client"
+        root: "root"
+        grant_hosts: ["localhost"]
+        users:
+          root: "root"
+          replication: "replication"
+          debian: "debian"
+      php:
+        directives:
+          memory_limit: "1024M"
+          upload_max_filesize: "200M"
+          post_max_size: "210M"
+        conf_dir: "/etc/php5/apache2"
+      drupal:
+        server:
+          web_user: "www-data"
+          web_group: "www-data"
+          assets: "/assets"
+          base: "/srv/www"
+        sites:
+          example:
+            active: true
+            deploy:
+              action:
+                - deploy
+                - import
+              releases: 1
+            drupal:
+              version: "7.26"
+              install:
+                install_configure_form.update_status_module: "'array(FALSE,FALSE)'"
+                "--clean-url": 1
+              settings:
+                profile: "standard"
+                files: "sites/default/files"
+                cookbook: "drupal"
+                settings:
+                  default:
+                    location: "sites/default/settings.php"
+                  example_template:
+                    location: "sites/default/example.settings.php"
+                    template: "example.settings.php.erb"
+                  example_static:
+                    location: "profiles/standard/standard.settings.php"
+                db_name: "example"
+                db_host: "localhost"
+                db_prefix: ""
+                db_driver: "mysql"
+                db_file: "/tmp/kitchen/data/test.sql"
+            repository:
+              host: "github.com"
+              uri: "https://github.com/drupal/drupal.git"
+              revision: "7.26"
+            web_app:
+              "80":
+                server_name: "drupal.local"
+                rewrite_engine: "On"
+                docroot: "/srv/www/example/current"
