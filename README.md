@@ -29,11 +29,14 @@ vagrant plugin install vagrant-berkshelf
 Now, you will have all the proper folders and files in place to run drupal lamp
 as an example site. However, what fun is that?!
 
-To customize drupal-lamp to use you specific site, you will need to edit the file
+To customize drupal-lamp to use your specific site, you will need to edit the file
 located at ```infrastructure/drupal_lamp.json```. See Below for the details on configuration
 of sites.
 
 Once you have updated the json, you will run the command:
+
+NOTE: Make sure that you have data-bag associated with the site. See Below for info
+about data-bags.
 
 ```
 vagrant up
