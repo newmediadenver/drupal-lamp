@@ -35,7 +35,7 @@ of sites.
 
 Once you have updated the json, you will run the command:
 
-NOTE: Make sure that you have data-bag associated with the site. See Below for info
+NOTE: Make sure that you have a data-bag associated with the site(s). See Below for info
 about data-bags.
 
 ```
