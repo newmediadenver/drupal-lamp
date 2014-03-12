@@ -56,6 +56,7 @@ berksfile **
 ### Drupal
 See [Drupal chef cookbook](http://github.com/newmediadenver/drupal)
 
+#### Data Bags (Hash or Mash)
 If you make a new or edit the existing site id in the drupal_lamp.json, you will
 need to create a databag for that site with the same id as the site name. Steps to do so:
 
