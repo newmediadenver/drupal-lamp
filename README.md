@@ -54,7 +54,14 @@ see that cookbooks repo. ** If you are curious where a cookbook comes from, look
 berksfile **
 
 ### Drupal
-see [Drupal chef cookbook](http://github.com/newmediadenver/drupal)
+See [Drupal chef cookbook](http://github.com/newmediadenver/drupal)
+
+If you make a new or edit the existing site id in the drupal_lamp.json, you will
+need to create a databag for that site with the same id as the site name. Steps to do so:
+
+1. ```cp chef/data_bags/sites/example.json chef/data_bags/sites/[site_name].json```
+1. Now edit the [site_name].json and change id of the site id.
+1. Edit the info for your site.
 
 ### Create a file share
 
