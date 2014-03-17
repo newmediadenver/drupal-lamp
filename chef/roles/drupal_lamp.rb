@@ -7,7 +7,7 @@ default_attributes(
       'sudoers_defaults' => [
         'env_reset',
         'exempt_group=admin',
-        "secure_path='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'",
+        'secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"',
       ],
       'agent_forwarding' => true,
       'groups' => ['admin', 'sudo'],
