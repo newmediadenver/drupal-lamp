@@ -1,28 +1,4 @@
 {
-  "build_essential": {
-    "compiletime": true
-  },
-  "db": {
-      "driver": "mysql",
-      "client_recipe": "mysql::client",
-      "root": "root",
-      "grant_hosts": [
-        "localhost"
-      ],
-      "users": {
-        "root": "root",
-        "replication": "replication",
-        "debian": "debian"
-      }
-  },
-  "php": {
-    "directives": {
-      "memory_limit": "1024M",
-      "upload_max_filesize": "200M",
-      "post_max_size": "210M"
-    },
-    "conf_dir" : "/etc/php5/apache2"
-  },
   "drupal": {
     "server": {
       "web_user": "www-data",
@@ -30,55 +6,55 @@
       "assets": "/assets",
       "base": "/srv/www"
     },
-      "sites": {
-          "example": {
-              "active": true,
-              "deploy": {
-                  "action": ["deploy"],
-                  "releases": 1
+    "sites": {
+      "example": {
+        "active": true,
+        "deploy": {
+          "action": ["deploy"],
+          "releases": 1
+        },
+        "drupal": {
+          "version": "7.26",
+          "install": {
+            "install_configure_form.update_status_module": "'array(FALSE,FALSE)'",
+            "--clean-url": 1
+          },
+          "settings": {
+            "profile": "standard",
+            "files": "sites/default/files",
+            "cookbook": "drupal",
+            "settings": {
+              "default": {
+                "location": "sites/default/settings.php"
               },
-              "drupal": {
-                  "version": "7.26",
-                  "install": {
-                      "install_configure_form.update_status_module": "'array(FALSE,FALSE)'",
-                      "--clean-url": 1
-                  },
-                  "settings": {
-                      "profile": "standard",
-                      "files": "sites/default/files",
-                      "cookbook": "drupal",
-                      "settings": {
-                        "default": {
-                          "location": "sites/default/settings.php"
-                        },
-                        "example_template": {
-                          "location": "sites/default/example.settings.php",
-                          "template": "example.settings.php.erb"
-                        },
-                        "example_static": {
-                          "location": "profiles/standard/standard.settings.php"
-                        }
-                      },
-                      "db_name": "example",
-                      "db_host": "localhost",
-                      "db_prefix": "",
-                      "db_driver": "mysql",
-                      "db_file": ""
-                  }
+              "example_template": {
+                "location": "sites/default/example.settings.php",
+                "template": "example.settings.php.erb"
               },
-              "repository": {
-                  "host": "github.com",
-                  "uri": "https://github.com/drupal/drupal.git",
-                  "revision": "7.26"
-              },
-              "web_app": {
-                  "80": {
-                    "server_name": "drupal.local",
-                    "rewrite_engine": "On",
-                    "docroot": "/srv/www/example/current"
-                  }
+              "example_static": {
+                "location": "profiles/standard/standard.settings.php"
               }
+            },
+            "db_name": "example",
+            "db_host": "localhost",
+            "db_prefix": "",
+            "db_driver": "mysql",
+            "db_file": ""
           }
+        },
+        "repository": {
+          "host": "github.com",
+          "uri": "https://github.com/drupal/drupal.git",
+          "revision": "7.26"
+        },
+        "web_app": {
+          "80": {
+            "server_name": "drupal.local",
+            "rewrite_engine": "On",
+            "docroot": "/srv/www/example/current"
+          }
+        }
       }
+    }
   }
 }
