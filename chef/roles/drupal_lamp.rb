@@ -18,9 +18,9 @@ default_attributes(
     'prefork' => {
       'startservers' => '1',
       'minspareservers' => '1',
-      'maxspareservers' => '2',
-      'maxclients' => '15',
-      'serverlimit' => '15',
+      'maxspareservers' => '5',
+      'maxclients' => '6',
+      'serverlimit' => '6',
       'keepalive' => 'On',
       'keepalivetimeout' => '4',
       'maxkeepaliverequests' => '1000'
@@ -48,25 +48,30 @@ default_attributes(
     'server_repl_password' => 'replication',
     'allow_remote_root' => 'true',
     'tunable' => {
+      'sync_binlog' => '0',
+      'innodb_flush_log_at_trx_commit' => '0',
       'max_allowed_packet' => '16M',
-      'key_buffer_size' => '32M',
-      'max_connect_errors' => '1000',
+      'max_connect_errors' => '1000000',
       'tmp_table_size' => '32M',
+      'max_heap_table_size' => '32M',
+      'query_cache_type' => '0',
       'max_connections' => '500',
       'thread_cache_size' => '50',
-      'table_open_cache' => '512',
-      'innodb_flush_log_at_trx_commit' => '0',
+      'open_files_limit' => '65535',
+      'table_definition_cache' => '4096',
+      'table_open_cache' => '4096',
+      'innodb_flush_method' => 'O_DIRECT',
       'innodb_file_per_table' => '1',
       'innodb_buffer_pool_size' => '128M',
-      'innodb_flush_method' => 'O_DIRECT',
-      'sync_binlog' => '0'
+      'query_cache_size' => '12M',
+      'table_cache' => '5120'
     }
   },
   'php' => {
     'directives' => {
-      'memory_limit' => '1024M',
-      'upload_max_filesize' => '200M',
-      'post_max_size' => '210M'
+      'memory_limit' => '192M',
+      'upload_max_filesize' => '8M',
+      'post_max_size' => '10M'
     },
     'conf_dir' => '/etc/php5/apache2'
   }
