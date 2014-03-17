@@ -26,13 +26,6 @@
             "settings": {
               "default": {
                 "location": "sites/default/settings.php"
-              },
-              "example_template": {
-                "location": "sites/default/example.settings.php",
-                "template": "example.settings.php.erb"
-              },
-              "example_static": {
-                "location": "profiles/standard/standard.settings.php"
               }
             },
             "db_name": "example",
