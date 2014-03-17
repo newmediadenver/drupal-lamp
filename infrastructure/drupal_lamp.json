@@ -1,11 +1,5 @@
 {
   "drupal": {
-    "server": {
-      "web_user": "www-data",
-      "web_group": "www-data",
-      "assets": "/assets",
-      "base": "/srv/www"
-    },
     "sites": {
       "example": {
         "active": true,
