@@ -36,7 +36,7 @@
         },
         "web_app": {
           "80": {
-            "server_name": "drupal.local",
+            "server_name": "example.local",
             "rewrite_engine": "On",
             "docroot": "/srv/www/example/current"
           }
