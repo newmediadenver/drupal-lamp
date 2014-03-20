@@ -23,8 +23,9 @@ git clone git@github.com:newmediadenver/drupal-lamp.git
 cd drupal-lamp
 mkdir assets
 vagrant plugin install vagrant-berkshelf
-vartant plugin install vagrant-omnibus
+vagrant plugin install vagrant-omnibus
 ```
+
 ***Note:*** On OSX Mavericks, run: ```sudo /Library/StartupItems/VirtualBox/VirtualBox restart```
 
 ```
