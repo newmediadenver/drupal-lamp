@@ -39,6 +39,11 @@ During the install process. Edit ```/etc/hosts``` add the line:
 
 Once the vagrant process is complete, visit http://example.local
 
+To work on the files locally, you will need to set up a method file sharing. This
+is described in the below sections. *** Note:*** You will need to run ```vagrant
+destroy -f && vagrant up```after changing the settings. This *WILL* destroy your
+machine and work, so make sure it is versioned.
+
 Installation Complex:
 -------------
 ### Custom Drupal Site(s)
@@ -54,7 +59,7 @@ Instructions: [Drupal](https://github.com/newmediadenver/drupal)
 ***NOTE:*** Make sure that you have a data-bag associated with the each unique site id.
 See below for info about data-bags.
 
-Once your done:```vagrant provision```
+Once your done: ```vagrant provision```
 
 ### Other Cookbook Settings
 To control the settings of other cookbooks.
@@ -77,8 +82,8 @@ Edit: ```infrastructure/drupal_lamp.json```
 Add the array of data needed for the desired cookbook.
 
 
-Advanced Configuration
--------------
+## Chef Configuration
+
 #### Data Bags (Hash or Mash)
 If you make a new or edit the existing site id in the drupal_lamp.json, you will
 need to create a databag for that site with the same id as the site name. Steps to do so:
@@ -86,6 +91,8 @@ need to create a databag for that site with the same id as the site name. Steps 
 1. ```cp chef/data_bags/sites/example.json chef/data_bags/sites/[site_name].json```
 1. Now edit the [site_name].json and change id of the site id.
 1. Edit the info for your site.
+
+## Vagrant Configuration
 
 ### Create a file share
 
