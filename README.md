@@ -50,7 +50,7 @@ To start customizing your machine:
 
 Edit: ```infrastructure/drupal_lamp.json```
 
-Read [Drupal](newmediadenver/drupal) for configuartion options and meaning behind
+Read [Drupal](https://github.com/newmediadenver/drupal) for configuartion options and meaning behind
 each hash/array/key-value pair.
 
 Most custom config settings can be handled in the ```drupal_lamp.json``` file. This
