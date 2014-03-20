@@ -11,7 +11,7 @@ There are two requirements that you need to manage before you can begin.
 * You need to install virtualbox https://www.virtualbox.org/wiki/Downloads
 * You need to install vagrant 1.4.0 or greater http://www.vagrantup.com/downloads.html
 
-Installation
+Installation Simple
 ------------
 To install drupal lamp, you must have Vagrant and Virtual box already installed.
 
@@ -23,13 +23,26 @@ git clone git@github.com:newmediadenver/drupal-lamp.git
 cd drupal-lamp
 mkdir assets
 vagrant plugin install vagrant-berkshelf
+vartant plugin install vagrant-omnibus
 ```
 *Note:* If you are on Mavericks, you will need to run: ```sudo /Library/StartupItems/VirtualBox/VirtualBox restart``` to get up and running.
 
-Now, you will have all the proper folders and files in place to run drupal lamp
-as an example site. However, what fun is that?!
+```
+vagrant up
+```
 
-To customize drupal-lamp to use your specific site, you will need to edit the file
+During the install process. Edit ```/etc/hosts``` add the line:
+
+```
+192.168.50.5  example.local
+```
+
+Once the vagrant process is complete, visit http://example.local
+
+Installation Complex:
+-------------
+
+To customize drupal-lamp to use a specific site / drupal git repo, you will need to edit the file
 located at ```infrastructure/drupal_lamp.json```. See Below for the details on configuration
 of sites.
 
@@ -37,14 +50,6 @@ Once you have updated the json, you will run the command:
 
 NOTE: Make sure that you have a data-bag associated with the site(s). See below for info
 about data-bags.
-
-```
-vagrant up
-```
-
-The command will provision the machine and have you up and running in relatively no
-time.
-
 
 Configuration
 -------------
