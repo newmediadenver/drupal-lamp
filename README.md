@@ -9,7 +9,7 @@ Requirements
 ------------
 There are two requirements that you need to manage before you can begin.
 * You need to install virtualbox https://www.virtualbox.org/wiki/Downloads
-* You need to install vagrant 1.4.0 or greater http://www.vagrantup.com/downloads.html
+* You need to install vagrant 1.4.3. http://www.vagrantup.com/download-archive/v1.4.3.html
 
 Installation Simple:
 ------------
@@ -41,29 +41,40 @@ Once the vagrant process is complete, visit http://example.local
 
 Installation Complex:
 -------------
-
-Drupal-lamp can be a highly customized machine that allows for your specific git
-repo, fine tuned mysql settings, multiple sites provisioning and launching, and
-much more.
+### Custom Drupal Site(s)
+Drupal-lamp allows for you to easily work with multiple sites at once using pre-existing
+git repos.
 
 To start customizing your machine:
 
 Edit: ```infrastructure/drupal_lamp.json```
 
-Read [Drupal](https://github.com/newmediadenver/drupal) for configuartion options and meaning behind
-each hash/array/key-value pair.
-
-Most custom config settings can be handled in the ```drupal_lamp.json``` file. This
-file is used by vagrant to pass variables to other cookbooks in tandem with Drupal.
+Instructions: [Drupal](https://github.com/newmediadenver/drupal)
 
 ***NOTE:*** Make sure that you have a data-bag associated with the each unique site id.
 See below for info about data-bags.
 
-Once your done:
+Once your done:```vagrant provision```
 
-```
-vagrant provision
-```
+### Other Cookbook Settings
+To control the settings of other cookbooks.
+
+Edit: ```infrastructure/drupal_lamp.json```
+
+Each Cookbook that is in the run list found here: ```chef/roles/drupal_lamp.rb```
+has associated hashes that can be manipulated and overrode through arrays in the
+JSON. Look in the berksfile for those cookbooks, and the repos for those settings.
+
+### To Add Cookbooks
+
+Edit: ```Berksfile``` and place call your desired cookbook.
+Instructions: [Berkshelf](http://berkshelf.com/)
+
+Edit: ```chef/roles/drupal_lamp.rb```
+Add the cookbook to the runlist at the bottom of the file.
+
+Edit: ```infrastructure/drupal_lamp.json```
+Add the array of data needed for the desired cookbook.
 
 
 Advanced Configuration
