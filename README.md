@@ -11,7 +11,7 @@ There are two requirements that you need to manage before you can begin.
 * You need to install virtualbox https://www.virtualbox.org/wiki/Downloads
 * You need to install vagrant 1.4.0 or greater http://www.vagrantup.com/downloads.html
 
-Installation Simple
+Installation Simple:
 ------------
 To install drupal lamp, you must have Vagrant and Virtual box already installed.
 
@@ -25,7 +25,7 @@ mkdir assets
 vagrant plugin install vagrant-berkshelf
 vartant plugin install vagrant-omnibus
 ```
-*Note:* If you are on Mavericks, you will need to run: ```sudo /Library/StartupItems/VirtualBox/VirtualBox restart``` to get up and running.
+***Note:*** On OSX Mavericks, run: ```sudo /Library/StartupItems/VirtualBox/VirtualBox restart```
 
 ```
 vagrant up
@@ -42,28 +42,32 @@ Once the vagrant process is complete, visit http://example.local
 Installation Complex:
 -------------
 
-To customize drupal-lamp to use a specific site / drupal git repo, you will need to edit the file
-located at ```infrastructure/drupal_lamp.json```. See Below for the details on configuration
-of sites.
+Drupal-lamp can be a highly customized machine that allows for your specific git
+repo, fine tuned mysql settings, multiple sites provisioning and launching, and
+much more.
 
-Once you have updated the json, you will run the command:
+To start customizing your machine:
 
-NOTE: Make sure that you have a data-bag associated with the site(s). See below for info
-about data-bags.
+Edit: ```infrastructure/drupal_lamp.json```
 
-Configuration
+Read [Drupal](newmediadenver/drupal) for configuartion options and meaning behind
+each hash/array/key-value pair.
+
+Most custom config settings can be handled in the ```drupal_lamp.json``` file. This
+file is used by vagrant to pass variables to other cookbooks in tandem with Drupal.
+
+***NOTE:*** Make sure that you have a data-bag associated with the each unique site id.
+See below for info about data-bags.
+
+Once your done:
+
+```
+vagrant provision
+```
+
+
+Advanced Configuration
 -------------
-### drupal_lamp.json
-
-AKA, One File to Rule them all (kinda). This file houses the configuration for the
-cookbooks used in this vagrant-chef pairing. For each top level hash (drupal, php, mysql, etc),
-there is a corresponding cookbook for that site. For all the options available to set,
-see that cookbooks repo. ** If you are curious where a cookbook comes from, look in the
-berksfile **
-
-### Drupal
-See [Drupal chef cookbook](http://github.com/newmediadenver/drupal)
-
 #### Data Bags (Hash or Mash)
 If you make a new or edit the existing site id in the drupal_lamp.json, you will
 need to create a databag for that site with the same id as the site name. Steps to do so:
