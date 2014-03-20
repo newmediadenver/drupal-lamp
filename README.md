@@ -3,7 +3,7 @@ drupal-lamp
 
 A vagrant build to run a Drupal LAMP stack utilizing best practices.
 
-Our vision is to aid the Drupal Community by removing the complexity of managing a development environment and to offer a bridge to maintain parity and best practices when going live.  [Interact with the roadmap](https://github.com/newmediadenver/drupal-lamp/issues/milestones) to help direct this project.
+Our vision is to aid the Drupal Community by removing the complexity of managing a development environment and to offer a bridge to maintain parity and best practices when going live.
 
 Requirements
 ------------
@@ -39,7 +39,7 @@ During the install process. Edit ```/etc/hosts``` add the line:
 
 Once the vagrant process is complete, visit http://example.local
 
-To work on the files locally, you will need to set up a method file sharing. This
+To work on the files locally, you will need to set up a method of file sharing. This
 is described in the below sections. *** Note:*** You will need to run ```vagrant
 destroy -f && vagrant up```after changing the settings. This *WILL* destroy your
 machine and work, so make sure it is versioned.
