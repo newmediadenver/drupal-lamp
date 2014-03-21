@@ -162,7 +162,7 @@ See wiki [SSL in a dev environment](https://github.com/newmediadenver/drupal-lam
 Contributing
 ------------
 
-We welcome contributed improvements and bug fixes via the usual workflow:
+We welcome contributed improvements and bug fixes via this workflow:
 
 1. Fork this repository
 2. Create your feature branch (`git checkout -b my-new-feature`)
