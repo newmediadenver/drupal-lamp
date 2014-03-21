@@ -153,9 +153,6 @@ suites:
               releases: 1
             drupal:
               version: "7.26"
-              install:
-                install_configure_form.update_status_module: "'array(FALSE,FALSE)'"
-                "--clean-url": 1
               settings:
                 profile: "standard"
                 files: "sites/default/files"
