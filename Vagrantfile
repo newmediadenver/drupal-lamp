@@ -20,7 +20,6 @@ require 'json'
   https://github.com/cyberswat/drupal-lamp/wiki/Vagrant-Base-Boxes
 
 =end
-data = JSON.parse(File.read("infrastructure/drupal_lamp.json"))
 
 Vagrant.configure("2") do |config|
   # for Vagrant-provided nfs support
@@ -50,12 +49,12 @@ Vagrant.configure("2") do |config|
     server.vm.network :private_network, ip: "192.168.50.5"
 
     # For Vagrant-provided synced folders
-    # Ensure the second parameter (/assets) is the same as the Default['drupal']['server']['assets'] 
+    # Ensure the second parameter (/assets) is the same as the Default['drupal']['server']['assets']
     # destination in your drupal_lamp.json file
     #server.vm.synced_folder "assets", "/assets", :nfs => false, :owner => "www-data", :group => "www-data"
-    
+
     # For Vagrant-provided nfs support
-    # Ensure the second parameter (/assets) is the same as the Default['drupal']['server']['assets'] 
+    # Ensure the second parameter (/assets) is the same as the Default['drupal']['server']['assets']
     # destination in your drupal_lamp.json file
     #server.vm.synced_folder "assets", "/assets", :nfs => true
 
@@ -63,8 +62,8 @@ Vagrant.configure("2") do |config|
       chef.log_level = :info
       chef.roles_path = "chef/roles"
       chef.data_bags_path = "chef/data_bags"
-      chef.add_role("drupal_lamp")
-      chef.json = data
+      chef.environment = "development"
+      chef.add_role("example")
     end
   end
 end
