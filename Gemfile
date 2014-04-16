@@ -6,6 +6,7 @@ gem "chefspec",   "3.3.1"
 gem "foodcritic", "~> 3.0"
 gem "rake"
 gem "rubocop"
+gem 'vagrant-wrapper', '~> 1.2.1.1'
 
 group :integration do
   gem "test-kitchen", "1.2.1"

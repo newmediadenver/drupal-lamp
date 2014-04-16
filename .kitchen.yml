@@ -3,6 +3,9 @@ driver:
   name: vagrant
 provisioner:
   name: chef_solo
+  data_bags_path: chef/data_bags
+  roles_path: chef/sites
+  environments_path: chef/environments
 platforms:
   - name: ubuntu-12.04
     driver_config:
@@ -18,11 +21,8 @@ platforms:
       forward_agent: true
 suites:
   - name: default
-    data_bags_path: chef/data_bags
-    data_path: test/integration/data
-    roles_path: chef/sites
     provisioner:
-      client_rb:
+      solo_rb:
         environment: development
     run_list:
       role[example]
@@ -32,12 +32,11 @@ suites:
           action:
             - deploy
             - install
+        repository:
+          shallow_clone: true
   - name: make
-    data_bags_path: chef/data_bags
-    data_path: test/integration/data
-    roles_path: chef/sites
     provisioner:
-      client_rb:
+      solo_rb:
         environment: development
     run_list:
       role[example]
@@ -53,12 +52,14 @@ suites:
           files:
             core: "drupal-org-core.make"
           template: true
+        repository:
+          host: "github.com"
+          uri: "https://github.com/commerceguys/commerce_kickstart.git"
+          revision: "7.x-2.13"
+          shallow_clone: true
   - name: import
-    data_bags_path: chef/data_bags
-    data_path: test/integration/data
-    roles_path: chef/sites
     provisioner:
-      client_rb:
+      solo_rb:
         environment: development
     run_list:
       role[example]
@@ -71,4 +72,5 @@ suites:
         drupal:
           settings:
             db_file: "/tmp/kitchen/data/test.sql"
-
+        repository:
+          shallow_clone: true

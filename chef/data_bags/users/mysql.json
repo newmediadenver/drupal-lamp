@@ -1,6 +1,6 @@
 {
   "id": "mysql",
-  "_default" : {
+  "development" : {
     "root": "root",
     "replication": "replication",
     "debian": "debian"
