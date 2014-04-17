@@ -25,52 +25,58 @@ suites:
       solo_rb:
         environment: development
     run_list:
-      role[example]
+      - role[site-base]
     attributes:
       drupal:
-        deploy:
-          action:
-            - deploy
-            - install
-        repository:
-          shallow_clone: true
+        sites:
+          example:
+            deploy:
+              action:
+                - deploy
+                - install
+            repository:
+              shallow_clone: true
   - name: make
     provisioner:
       solo_rb:
         environment: development
     run_list:
-      role[example]
+      - role[site-base]
     attributes:
       drupal:
-        deploy:
-          action:
-            - deploy
-            - install
-          releases: 1
-        drush_make:
-          api: 2
-          files:
-            core: "drupal-org-core.make"
-          template: true
-        repository:
-          host: "github.com"
-          uri: "https://github.com/commerceguys/commerce_kickstart.git"
-          revision: "7.x-2.13"
-          shallow_clone: true
+        sites:
+          example:
+            deploy:
+              action:
+                - deploy
+                - install
+              releases: 1
+            drush_make:
+              api: 2
+              files:
+                core: "drupal-org-core.make"
+              template: true
+            repository:
+              host: "github.com"
+              uri: "https://github.com/commerceguys/commerce_kickstart.git"
+              revision: "7.x-2.13"
+              shallow_clone: true
   - name: import
     provisioner:
       solo_rb:
         environment: development
     run_list:
-      role[example]
+      - role[site-base]
     attributes:
       drupal:
-        deploy:
-          action:
-            - deploy
-            - import
-        drupal:
-          settings:
-            db_file: "/tmp/kitchen/data/test.sql"
-        repository:
-          shallow_clone: true
+        sites:
+          example:
+            deploy:
+              action:
+                - deploy
+                - import
+            drupal:
+              settings:
+                db_file: "/tmp/kitchen/data/test.sql"
+            repository:
+              shallow_clone: true

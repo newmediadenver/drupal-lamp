@@ -6,24 +6,14 @@
   "default_attributes": { },
   "override_attributes": {
     "drupal": {
-      "name": "example",
-      "deploy": {
-        "action": ["deploy", "install"]
+      "sites": {
+        "example": {
+          "deploy": {
+            "action": ["deploy", "install"]
+          }
+        }
       }
     }
   },
-  "run_list": [
-    "recipe[apt]",
-    "recipe[build-essential]",
-    "recipe[drupal::init]",
-    "recipe[sudo]",
-    "recipe[git]",
-    "recipe[mysql::server]",
-    "recipe[drupal::ssh]",
-    "recipe[drupal::apache]",
-    "recipe[drupal::php]",
-    "recipe[drupal::drush]",
-    "recipe[drupal::mysql]",
-    "recipe[drupal]"
-  ]
+  "run_list": []
 }

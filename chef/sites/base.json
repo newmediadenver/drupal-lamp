@@ -1,0 +1,22 @@
+{
+  "name": "base",
+  "description": "The base role that gets added to every machine.",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": { },
+  "override_attributes": { },
+  "run_list": [
+    "recipe[apt]",
+    "recipe[build-essential]",
+    "recipe[drupal::init]",
+    "recipe[sudo]",
+    "recipe[git]",
+    "recipe[mysql::server]",
+    "recipe[drupal::ssh]",
+    "recipe[drupal::apache]",
+    "recipe[drupal::php]",
+    "recipe[drupal::drush]",
+    "recipe[drupal::mysql]",
+    "recipe[drupal]"
+  ]
+}
