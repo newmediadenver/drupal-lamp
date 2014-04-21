@@ -25,7 +25,7 @@ suites:
       solo_rb:
         environment: development
     run_list:
-      - role[site-base]
+      - role[base]
     attributes:
       drupal:
         sites:
@@ -41,7 +41,7 @@ suites:
       solo_rb:
         environment: development
     run_list:
-      - role[site-base]
+      - role[base]
     attributes:
       drupal:
         sites:
@@ -66,7 +66,7 @@ suites:
       solo_rb:
         environment: development
     run_list:
-      - role[site-base]
+      - role[base]
     attributes:
       drupal:
         sites:
