@@ -8,6 +8,7 @@
     "drupal": {
       "sites": {
         "example": {
+          "active": 1,
           "deploy": {
             "action": ["deploy", "install"]
           }
