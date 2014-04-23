@@ -30,6 +30,7 @@ suites:
       drupal:
         sites:
           example:
+            active: 1
             deploy:
               action:
                 - deploy
@@ -46,6 +47,7 @@ suites:
       drupal:
         sites:
           example:
+            active: 1
             deploy:
               action:
                 - deploy
@@ -71,6 +73,7 @@ suites:
       drupal:
         sites:
           example:
+            active: 1
             deploy:
               action:
                 - deploy
