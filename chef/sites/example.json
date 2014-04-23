@@ -3,7 +3,6 @@
   "description": "An example site to load Drupal.",
   "chef_type": "role",
   "json_class": "Chef::Role",
-  "default_attributes": { },
   "override_attributes": {
     "drupal": {
       "sites": {
