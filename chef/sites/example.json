@@ -10,6 +10,15 @@
           "active": 1,
           "deploy": {
             "action": ["deploy", "install"]
+          },
+          "repository": {
+            "uri": "https://github.com/drupal/drupal.git",
+            "revision": "7.26"
+          },
+          "drupal": {
+            "settings": {
+              "profile": "standard"
+            }
           }
         }
       }
