@@ -61,6 +61,8 @@ vagrant up
 echo '192.168.50.5    example.local' | sudo tee -a /etc/hosts
 ```
 
+The example site that ships with drupal-lamp is now available in your browser at http://example.local
+
 
 Installation Complex:
 -------------
