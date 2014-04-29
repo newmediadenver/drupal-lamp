@@ -1,3 +1,5 @@
+source "https://api.berkshelf.com"
+
 cookbook 'apt', '~> 2.3.0'
 cookbook 'apache2', '~> 1.8.14'
 cookbook 'build-essential', '~> 1.4.2'
