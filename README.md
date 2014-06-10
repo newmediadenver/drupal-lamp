@@ -9,7 +9,7 @@ Requirements
 ------------
 There are two requirements that you need to manage before you can begin.
 * You need to install virtualbox https://www.virtualbox.org/wiki/Downloads
-* You need to install vagrant 1.6.3 http://www.vagrantup.com/downloads.html
+* You need to install vagrant 1.4.3 or greater http://www.vagrantup.com/downloads.html
 
 Installation Simple:
 ------------
