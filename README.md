@@ -9,7 +9,7 @@ Requirements
 ------------
 There are two requirements that you need to manage before you can begin.
 * You need to install virtualbox https://www.virtualbox.org/wiki/Downloads
-* You need to install vagrant 1.4.3. http://www.vagrantup.com/download-archive/v1.4.3.html
+* You need to install vagrant 1.6.3 http://www.vagrantup.com/downloads.html
 
 Installation Simple:
 ------------
@@ -22,7 +22,7 @@ cd vagrant
 git clone git@github.com:newmediadenver/drupal-lamp.git
 cd drupal-lamp
 mkdir assets
-vagrant plugin install vagrant-berkshelf
+vagrant plugin install vagrant-berkshelf --plugin-version '2.0.1'
 vagrant plugin install vagrant-omnibus
 ```
 
